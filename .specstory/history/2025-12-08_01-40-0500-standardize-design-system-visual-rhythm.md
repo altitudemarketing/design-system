@@ -1417,15 +1417,7 @@ Here is a detailed prompt you can use to update the other pages. It encapsulates
 >
 > ### 4. Layout
 > *   Ensure strictly 4px/8px grid usage (`var(--spacing-4)`, `var(--spacing-8)`).
-> *   Align all content to `max-width: var(--layout-
-
----
-
-
-
----
-
-6xl)`.
+> *   Align all content to `max-width: var(--layout-6xl)`.
 >
 > Please apply these changes to the current file.
 

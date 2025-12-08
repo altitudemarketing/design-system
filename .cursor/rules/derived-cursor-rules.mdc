@@ -70,7 +70,8 @@ src/
 │   │   ├── primitives/
 │   │   │   ├── page.tsx              (Primitives overview)
 │   │   │   └── colors/page.tsx       (22 color palettes)
-│   │   ├── semantic/page.tsx         (Semantic tokens)\n│   │   ├── components/page.tsx         (Component tokens)
+│   │   ├── semantic/page.tsx         (Semantic tokens)
+│   │   ├── components/page.tsx       (Component tokens)
 │   │   ├── colors/page.tsx           (UPDATE existing)
 │   │   ├── typography/page.tsx       (UPDATE existing)
 │   │   └── spacing/page.tsx          (UPDATE existing)
@@ -380,10 +381,10 @@ The progress tracker reports "28/28 tasks" for Phase 1, but manually counting al
 | Phase | Status | Progress |
 |-------|--------|----------|
 | Phase 1: Documentation | 🟢 Complete | 31/31 tasks |
-| Phase 2: Relationships | ⚪ Pending | 0/9 tasks |
-| Phase 3: Export/Import | ⚪ Pending | 0/12 tasks |
+| Phase 2: Relationships | ⚪ Pending | 0/14 tasks |
+| Phase 3: Export/Import | ⚪ Pending | 0/17 tasks |
 
-**Total Progress:** 31/52 tasks (60%)
+**Total Progress:** 31/62 tasks (50%)
 
 ## SIDEBAR RULES
 
