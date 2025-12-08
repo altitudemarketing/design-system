@@ -448,7 +448,12 @@ Additional data:
 
 ```json
 {
-  "status": "success"
+  "status": "success",
+  "reviewData": {
+    "status": "None",
+    "selectedOption": "rejectAndTellWhatToDoDifferently",
+    "isShowingInput": false
+  }
 }
 ```
 Result:
@@ -499,7 +504,13 @@ Additional data:
 
 ```json
 {
-  "codeblockId": "466a03b6-ecaa-4579-95d3-d000eec20e99"
+  "codeblockId": "466a03b6-ecaa-4579-95d3-d000eec20e99",
+  "reviewData": {
+    "status": "None",
+    "selectedOption": "accept",
+    "isShowingInput": false,
+    "firstTimeReviewMode": false
+  }
 }
 ```
 Status: **completed**
@@ -548,7 +559,13 @@ Additional data:
 
 ```json
 {
-  "codeblockId": "a8f4041f-0738-4ee6-b6a8-e335ccb857b2"
+  "codeblockId": "a8f4041f-0738-4ee6-b6a8-e335ccb857b2",
+  "reviewData": {
+    "status": "None",
+    "selectedOption": "accept",
+    "isShowingInput": false,
+    "firstTimeReviewMode": false
+  }
 }
 ```
 Status: **completed**
@@ -602,7 +619,13 @@ Additional data:
 
 ```json
 {
-  "codeblockId": "b4d03fe4-cb3c-4595-8389-c28833cbe343"
+  "codeblockId": "b4d03fe4-cb3c-4595-8389-c28833cbe343",
+  "reviewData": {
+    "status": "None",
+    "selectedOption": "accept",
+    "isShowingInput": false,
+    "firstTimeReviewMode": false
+  }
 }
 ```
 Status: **completed**
@@ -648,7 +671,13 @@ Additional data:
 
 ```json
 {
-  "codeblockId": "833ef135-6c34-4558-8f88-57a16f56d194"
+  "codeblockId": "833ef135-6c34-4558-8f88-57a16f56d194",
+  "reviewData": {
+    "status": "None",
+    "selectedOption": "accept",
+    "isShowingInput": false,
+    "firstTimeReviewMode": false
+  }
 }
 ```
 Status: **completed**
@@ -683,7 +712,13 @@ Additional data:
 
 ```json
 {
-  "codeblockId": "56264b58-6be2-4d03-b1f9-685010058617"
+  "codeblockId": "56264b58-6be2-4d03-b1f9-685010058617",
+  "reviewData": {
+    "status": "None",
+    "selectedOption": "accept",
+    "isShowingInput": false,
+    "firstTimeReviewMode": false
+  }
 }
 ```
 Status: **completed**
@@ -773,7 +808,12 @@ Additional data:
 
 ```json
 {
-  "status": "success"
+  "status": "success",
+  "reviewData": {
+    "status": "None",
+    "selectedOption": "rejectAndTellWhatToDoDifferently",
+    "isShowingInput": false
+  }
 }
 ```
 Result:
@@ -807,7 +847,13 @@ Additional data:
 
 ```json
 {
-  "codeblockId": "2b895ee2-a4de-4d44-8075-26272ad526a7"
+  "codeblockId": "2b895ee2-a4de-4d44-8075-26272ad526a7",
+  "reviewData": {
+    "status": "None",
+    "selectedOption": "accept",
+    "isShowingInput": false,
+    "firstTimeReviewMode": false
+  }
 }
 ```
 Status: **completed**
@@ -834,7 +880,13 @@ Additional data:
 
 ```json
 {
-  "codeblockId": "5ca4c28d-34f7-4cf0-8875-ae2d8ffa0d9f"
+  "codeblockId": "5ca4c28d-34f7-4cf0-8875-ae2d8ffa0d9f",
+  "reviewData": {
+    "status": "None",
+    "selectedOption": "accept",
+    "isShowingInput": false,
+    "firstTimeReviewMode": false
+  }
 }
 ```
 Status: **completed**
@@ -861,7 +913,13 @@ Additional data:
 
 ```json
 {
-  "codeblockId": "4a2770e1-249e-4be7-948d-b4606de47df3"
+  "codeblockId": "4a2770e1-249e-4be7-948d-b4606de47df3",
+  "reviewData": {
+    "status": "None",
+    "selectedOption": "accept",
+    "isShowingInput": false,
+    "firstTimeReviewMode": false
+  }
 }
 ```
 Status: **completed**
@@ -888,7 +946,13 @@ Additional data:
 
 ```json
 {
-  "codeblockId": "a8c7c019-02e8-4068-807c-4cb4daf5a974"
+  "codeblockId": "a8c7c019-02e8-4068-807c-4cb4daf5a974",
+  "reviewData": {
+    "status": "None",
+    "selectedOption": "accept",
+    "isShowingInput": false,
+    "firstTimeReviewMode": false
+  }
 }
 ```
 Status: **completed**
@@ -915,7 +979,13 @@ Additional data:
 
 ```json
 {
-  "codeblockId": "581e6308-19ad-40db-8712-ca06426ed9f4"
+  "codeblockId": "581e6308-19ad-40db-8712-ca06426ed9f4",
+  "reviewData": {
+    "status": "None",
+    "selectedOption": "accept",
+    "isShowingInput": false,
+    "firstTimeReviewMode": false
+  }
 }
 ```
 Status: **completed**
@@ -942,7 +1012,13 @@ Additional data:
 
 ```json
 {
-  "codeblockId": "53e39588-85f0-43ec-948a-ddccd9ba1709"
+  "codeblockId": "53e39588-85f0-43ec-948a-ddccd9ba1709",
+  "reviewData": {
+    "status": "None",
+    "selectedOption": "accept",
+    "isShowingInput": false,
+    "firstTimeReviewMode": false
+  }
 }
 ```
 Status: **completed**
@@ -969,7 +1045,13 @@ Additional data:
 
 ```json
 {
-  "codeblockId": "cb86ae2a-e6a4-4e38-aff8-e4917184e216"
+  "codeblockId": "cb86ae2a-e6a4-4e38-aff8-e4917184e216",
+  "reviewData": {
+    "status": "None",
+    "selectedOption": "accept",
+    "isShowingInput": false,
+    "firstTimeReviewMode": false
+  }
 }
 ```
 Status: **completed**
@@ -1114,7 +1196,13 @@ Additional data:
 
 ```json
 {
-  "codeblockId": "1e4a5120-a01c-4d6d-9e86-938454bcf859"
+  "codeblockId": "1e4a5120-a01c-4d6d-9e86-938454bcf859",
+  "reviewData": {
+    "status": "None",
+    "selectedOption": "accept",
+    "isShowingInput": false,
+    "firstTimeReviewMode": false
+  }
 }
 ```
 Status: **completed**
@@ -1146,7 +1234,13 @@ Additional data:
 
 ```json
 {
-  "codeblockId": "47050b6d-d995-463e-b0b2-bdd898651c35"
+  "codeblockId": "47050b6d-d995-463e-b0b2-bdd898651c35",
+  "reviewData": {
+    "status": "None",
+    "selectedOption": "accept",
+    "isShowingInput": false,
+    "firstTimeReviewMode": false
+  }
 }
 ```
 Status: **completed**
@@ -1173,7 +1267,13 @@ Additional data:
 
 ```json
 {
-  "codeblockId": "ecdbe75c-e7b3-4aca-bb7e-494ee54d62ad"
+  "codeblockId": "ecdbe75c-e7b3-4aca-bb7e-494ee54d62ad",
+  "reviewData": {
+    "status": "None",
+    "selectedOption": "accept",
+    "isShowingInput": false,
+    "firstTimeReviewMode": false
+  }
 }
 ```
 Status: **completed**
@@ -1200,7 +1300,13 @@ Additional data:
 
 ```json
 {
-  "codeblockId": "c6e61b29-610d-4a03-8cbd-1988a88f0258"
+  "codeblockId": "c6e61b29-610d-4a03-8cbd-1988a88f0258",
+  "reviewData": {
+    "status": "None",
+    "selectedOption": "accept",
+    "isShowingInput": false,
+    "firstTimeReviewMode": false
+  }
 }
 ```
 Status: **completed**
@@ -1227,7 +1333,13 @@ Additional data:
 
 ```json
 {
-  "codeblockId": "280084c6-8516-4059-9358-83b15ac07253"
+  "codeblockId": "280084c6-8516-4059-9358-83b15ac07253",
+  "reviewData": {
+    "status": "None",
+    "selectedOption": "accept",
+    "isShowingInput": false,
+    "firstTimeReviewMode": false
+  }
 }
 ```
 Status: **completed**
@@ -1393,7 +1505,12 @@ Additional data:
 
 ```json
 {
-  "status": "success"
+  "status": "success",
+  "reviewData": {
+    "status": "None",
+    "selectedOption": "rejectAndTellWhatToDoDifferently",
+    "isShowingInput": false
+  }
 }
 ```
 Result:
@@ -1454,8 +1571,8 @@ Additional data:
 {
   "status": "error",
   "reviewData": {
-    "status": "Done",
-    "selectedOption": "run",
+    "status": "None",
+    "selectedOption": "rejectAndTellWhatToDoDifferently",
     "isShowingInput": false,
     "candidatesForAllowlist": [
       "gh"
@@ -1527,7 +1644,11 @@ The user has re-authenticated and wants to name the repo `design-system-ui`. Let
 3. Create the repo in altitudemarketing org
 4. Add all files, commit, and push
 
-I need to find their email associated with betterbydesign. Let me check the git config or ask. Actually, I should just proceed - I can get their email from the gh api</details></think>
+I need to find their email associated with betterbydesign. Let me check the git config or ask. Actually, I should just proceed - I can get their email from the gh api or configure it.</details></think>
+
+---
+
+Cancelled
 
 ---
 

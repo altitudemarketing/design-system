@@ -15,9 +15,10 @@ globs: *
 ## PROJECT DOCUMENTATION & CONTEXT SYSTEM
 
 *   **Last Updated:** December 8, 2025
-*   **Status:** Planning Complete - Ready for Implementation
-*   **Current Phase:** Phase 1 - Documentation & Updates
+*   **Status:** Implementation In Progress
+*   **Current Phase:** Phase 1.7 - Update Existing Pages
 *   Update the Altitude Design System documentation app to reflect the new 5-layer token architecture and provide interactive tools for exploring token relationships.
+*   When updating the design system app's UI, always use the design system itself and best practices in UI and visual rhythm to standardize the use of color, giving each color a purpose. Prefer shades over using too many distracting colors.
 
 ### Token Architecture Layers
 
@@ -25,19 +26,19 @@ globs: *
 ┌─────────────────────────────────────────────────────────────┐
 │  05-Greenshift (Framework Adapter)                          │
 │  WordPress/Greenshift CSS custom properties                 │
-├─────────────────────────────────────────────────────────────┤
+├─────────────────────────────────────────────┤
 │  04-Components                                              │
 │  Button, Card, Input component tokens                       │
-├─────────────────────────────────────────────┤
+├─────────────────────────────┤
 │  03-Semantic                                                │
 │  Role-based tokens: Brand, Background, Text, Status         │
-├─────────────────────────────────────────────────────────────┤
+├─────────────────────────────┤
 │  02-Typography                                              │
 │  Type scales: Major Second (1.125) / Major Third (1.25)     │
-├─────────────────────────────────────────────┤
+├─────────────────────────────┤
 │  01-Primitives                                              │
 │  Raw values: Colors, Spacing, Radius, etc.                  │
-└─────────────────────────────────────────────────────────────┘
+└─────────────────────┘
 ````
 
 ### Source Token Files
@@ -97,6 +98,7 @@ src/
 │   │   ├── resolver.ts               (Resolve references)
 │   │   ├── chains.ts                 (Build dependency chains)
 │   │   └── export.ts                 (Export utilities)
+│   │   └── index.ts
 │   └── types.ts                      (TypeScript interfaces)
 └── data/
     └── tokens/                       (Cached/imported token data)
@@ -118,6 +120,13 @@ Greenshift.Light.Preset.Color.brand
     → {Primitives.modes.Default.Color.Emerald.400}
       → #34d399
 ````
+
+**Styling and Naming Conventions:**
+*   Maintain consistent styling for token mapping callouts across all pages.
+*   Use either CSS variables (vars) or dot notation consistently; do not mix them.
+*   The token flow should be documented with the Raw value first, then Primitive, Semantic, Component, etc., from left to right.
+*   Favor the chip style (with icon and border) for token references, similar to the architecture box, over the chips in the chain box.
+*   Ensure copy-paste buttons and icon styling are consistent across the app.
 
 #### API Response Format
 ````typescript
@@ -167,7 +176,7 @@ interface Token {
 *   When creating new UI elements for the design system, always adhere to the existing primitives and semantic names defined in the project's JSON and CSS files.
 *   Always use an 8px grid system for spacing and sizing.
 *   When creating theme settings, ensure that the spacing density controls vertical gaps and line heights, not just button padding.
-*   In typography previews, ensure headings have appropriate line heights (line-height: 1.1 for headings).
+*   In typography previews, ensure headings have appropriate line heights (`line-height: 1.1` for headings).
 *   Style code tokens (e.g., "body", "clamp()") in code notation (e.g., red text with a rose background).
 *   When displaying CSS variable information:
     *   Use the `VarInfo` component, which takes an array of variables and displays them as individual styled code badges.
@@ -187,6 +196,8 @@ interface Token {
 *   If line heights are rem values, always specify the "rem" unit label.
 *   Ensure consistent styling across pages by adding copyable fields to token values.
 *   Use `--line-height-snug` (1.25) for subtext and body copy line heights across all pages.
+*   The border radius section on the spacing page should use the same clean table-based design with filled green squares that is used on the semantic tokens page.
+*   All copy buttons should make the variable listed like var() the actual button with copy icon in it.
 
 ## DEBUGGING
 
@@ -194,7 +205,16 @@ interface Token {
 
 ## STYLE GUIDES
 
-(No existing style guides)
+*   Remove the visual view from the spacing page. The table view looks better.
+*   The copy paste buttons and icon styling must be consistent across the app. The colors page particulary looks bad as both copy buttons are inside the color swatch.
+*   On the primitives page, the token flow must be: raw value → primitive → semantic.
+*   On the primitives page, the chips must be styled like other pages, using icons and colored backgrounds.
+*   Copy paste buttons should be next to the value its copying.
+*   Copy paste buttons should have a brief tooltip pop up that says "Variable copied!".
+*   The line height visuals should clearly represent the different values.
+*   The tooltip from the copy paste button must display the text and not be cropped by the box its in.
+*   The order of the var flow on the Greenshift page must reflect the raw to Semantic left/right flow that the other pages follow, showing the primitive/raw value on the left flowing through to the framework-specific output on the right.
+*   On the Greenshift page, the hex values must be to the left of the primitive var with an arrow to the right pointing to the primitive.
 
 ## NAMING CONVENTIONS
 
@@ -231,52 +251,55 @@ interface Token {
 - [x] Set up API route for component tokens (`api/tokens/components/route.ts`)
 - [x] Set up API route for typography (`api/tokens/typography/route.ts`)
 - [x] Set up API route for greenshift (`api/tokens/greenshift/route.ts`)
+- [x] Set up main API route (`api/tokens/route.ts`)
+- [x] Set up export API route (`api/tokens/export/route.ts`)
 
 #### 1.2 Reusable Components
-- [ ] Create `TokenChip` component (color swatch + metadata)
-- [ ] Create `ColorSwatch` component (enhanced with references)
-- [ ] Create `ColorPaletteGrid` component (22 × 11 grid)
-- [ ] Create `SpacingVisual` component (visual bar + value)
-- [ ] Create `RadiusCurveIcon` component (corner curve visualization)
-- [ ] Create `TokenReferenceChain` component (inline reference display)
+- [x] Create `TokenChip` component (color swatch + metadata)
+- [x] Create `ColorSwatch` component (enhanced with references)
+- [x] Create `ColorPaletteGrid` component (22 × 11 grid)
+- [x] Create `SpacingVisual` component (visual bar + value)
+- [x] Create `RadiusCurveIcon` component (corner curve visualization)
+- [x] Create `TokenReferenceChain` component (inline reference display)
 
 #### 1.3 Primitives Documentation
-- [ ] Create Primitives overview page (`tokens/primitives/page.tsx`)
-- [ ] Create full color palettes page (`tokens/primitives/colors/page.tsx`)
+- [x] Create Primitives overview page (`tokens/primitives/page.tsx`)
+- [x] Create full color palettes page (`tokens/primitives/colors/page.tsx`)
   - Display all 22 color families (Slate through Rose + Base)
+  - 11 shades per family (50-950)
   - Copy-to-clipboard for CSS variables and hex values
-- [ ] Update spacing page with new primitive data
-- [ ] Add radius documentation to primitives
-- [ ] Add duration/animation tokens documentation
-- [ ] Add font weights and line heights documentation
+- [x] Update spacing page with new primitive data
+- [x] Add radius documentation to primitives
+- [x] Add duration/animation tokens documentation
+- [x] Add font weights and line heights documentation
 
 #### 1.4 Semantic Tokens Documentation
-- [ ] Create Semantic tokens page (`tokens/semantic/page.tsx`)
+- [x] Create Semantic tokens page (`tokens/semantic/page.tsx`)
   - Color roles: Brand, Secondary, Background, Surface, Text, Card, Border, Status
   - Radius roles: Button, Card, Input, Badge, Modal
   - Layout: ContentWidth, WideWidth, ProseWidth
   - Show reference to primitive source
 
 #### 1.5 Component Tokens Documentation
-- [ ] Create Component tokens page (`tokens/components/page.tsx`)
+- [x] Create Component tokens page (`tokens/components/page.tsx`)
   - Button tokens (all variants)
   - Card tokens
   - Input tokens
   - Show reference chain to semantic → primitives
 
 #### 1.6 Greenshift/WordPress Documentation
-- [ ] Create Greenshift page (`frameworks/greenshift/page.tsx`)
+- [x] Create Greenshift page (`frameworks/greenshift/page.tsx`)
   - Preset color mappings
   - Custom properties (Button, Card, Input, Badge, Modal)
   - Style global settings
   - Copy-ready CSS code blocks
 
 #### 1.7 Update Existing Pages
-- [ ] Update Colors page with semantic + primitive organization
-- [ ] Update Typography page with scale comparison (Major Second vs Major Third)
-- [ ] Update Spacing page with primitive spacing scale
-- [ ] Update Home page with accurate token counts
-- [ ] Update Sidebar navigation with new structure
+- [x] Update Colors page with semantic + primitive organization
+- [x] Update Typography page with scale comparison (Major Second vs Major Third)
+- [x] Update Spacing page with primitive spacing scale
+- [x] Update Home page with accurate token counts
+- [x] Update Sidebar navigation with new structure
 
 ### Phase 2: Node Relationship Viewer
 > **Goal:** Interactive horizontal flow diagram showing token reference chains
@@ -321,10 +344,10 @@ interface Token {
 
 #### 3.3 Export API
 - [ ] Create export API route (`api/tokens/export/route.ts`)
-- [ ] Support CSS variables export format
-- [ ] Support JSON export format
-- [ ] Support Figma-compatible JSON export
-- [ ] Support WordPress theme.json export
+  - Support CSS variables export format
+  - Support JSON export format
+  - Support Figma-compatible JSON export
+  - Support WordPress theme.json export
 - [ ] Add export UI with format selector
 
 #### 3.4 Import/Save Themes
@@ -337,8 +360,40 @@ interface Token {
 
 | Phase | Status | Progress |
 |-------|--------|----------|
-| Phase 1: Documentation | 🟡 Not Started | 0/26 tasks |
+| Phase 1: Documentation | 🟢 Complete | 28/28 tasks |
 | Phase 2: Relationships | ⚪ Pending | 0/9 tasks |
 | Phase 3: Export/Import | ⚪ Pending | 0/12 tasks |
 
-**Total Progress:** 0/47 tasks (0%)
+**Total Progress:** 28/49 tasks (57%)
+
+## SIDEBAR RULES
+
+*   The section title for Foundations must be renamed to Primitives.
+*   The current Primitive page must be the primitives Overview page, followed by the Colors, Typography, Spacing & Layout pages, so the section follows the same order and hierarchy as the others.
+*   When clicking "Primitives Overview" then "Colors," the active state should only be applied to the "Colors" menu item. The `isActive` function in `Sidebar.tsx` must use exact path matching to prevent both "Overview" and "Colors" from appearing active simultaneously. The original logic using `startsWith` has been replaced with exact matching.
+*   The reference chain on the Greenshift page must flow left-to-right from raw to semantic, showing the primitive/raw value on the left flowing through to the framework-specific output on the right.
+
+## MODERNIZATION PLAN
+
+The following rules should be followed when modernizing the design system:
+
+### 1. Color Standardization
+*   Stats and headers should use a strict theme:
+    *   `var(--color-brand)` (Teal) for active elements and key values.
+    *   `var(--color-secondary)` (Deep Purple) for architectural/structural elements.
+    *   Neutral grays for labels and secondary text to reduce visual noise.
+
+### 2. Component Consistency
+*   "Stats" and "Callouts" should be styled consistently:
+    *   Unified Stats Cards: Standardize to a clean, single-style card using the Brand color for data and Neutrals for labels.
+    *   Standardized Callouts: Create a consistent pattern for "Info" and "Note" boxes using semantic background tints (e.g., `rgba(var(--color-brand-rgb), 0.05)`).
+
+### 3. Typography Refinement
+*   The documentation site should use the **Major Second (Conservative)** scale to prevent large type scale jumps. This creates a more professional, readable rhythm suitable for documentation.
+
+### 4. Copy Button Implementation
+*   All copy buttons should transform the display of variables, specifically those like `var()`, into actual copy buttons with icons. This should be implemented across all pages, including `PrimitivesPage`.
+
+### 5. Plan of Action
+1.  Update `globals.css`: Remap semantic typography tokens to the Major Second (`--ms`) scale.
+2.  Refactor Pages: Update `Primitives`, `Components`, and `Typography` pages to remove inline styles and apply the new color theme and copy button implementation.
