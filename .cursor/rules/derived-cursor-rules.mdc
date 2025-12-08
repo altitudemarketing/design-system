@@ -219,13 +219,13 @@ interface Token {
 *   On the Greenshift page, the hex values must be to the left of the primitive var with an arrow to the right pointing to the primitive.
 *   The section title for Foundations must be renamed to Primitives.
 *   The current Primitive page must be the primitives Overview page, followed by the Colors, Typography, Spacing & Layout pages, so the section follows the same order and hierarchy as the others.
-*   When clicking "Primitives Overview" then "Colors," the active state should only be applied to the \"Colors\" menu item. The &#96;isActive&#96; function in &#96;Sidebar.tsx&#96; must use exact path matching to prevent both \"Overview\" and \"Colors\" from appearing active simultaneously. The original logic using &#96;startsWith&#96; has been replaced with exact matching.
+*   When clicking "Primitives Overview" then "Colors," the active state should only be applied to the "Colors" menu item. The `isActive` function in `Sidebar.tsx` must use exact path matching to prevent both "Overview" and "Colors" from appearing active simultaneously. The original logic using `startsWith` has been replaced with exact matching.
 *   The reference chain on the Greenshift page must flow left-to-right from raw to semantic, showing the primitive/raw value on the left flowing through to the framework-specific output on the right.
 *   All section header icons should be vertically aligned with the corresponding title text.
 *   **Icon Style Rules:**
-    *   **H1 Page Titles:** Use &#96;var(--color-secondary)&#96; icon with white background (&#96;var(--color-card)&#96;) and a light thin border (&#96;1px solid rgba(68, 75, 140, 0.2)&#96;).
-    *   **Small Icons Inside a Callout:** Use a dark purple icon only (&#96;var(--color-secondary)&#96;) with no border or background.
-    *   **H2 Titles and Icon Pairs:** Use &#96;var(--color-secondary)&#96; icon, light purple background (&#96;rgba(68, 75, 140, 0.08)&#96;), and no border.
+    *   **H1 Page Titles:** Use `var(--color-secondary)` icon with white background (`var(--color-card)`) and a light thin border (`1px solid rgba(68, 75, 140, 0.2)`).
+    *   **Small Icons Inside a Callout:** Use a dark purple icon only (`var(--color-secondary)`) with no border or background.
+    *   **H2 Titles and Icon Pairs:** Use `var(--color-secondary)` icon, light purple background (`rgba(68, 75, 140, 0.08)`), and no border.
     *   All icons should be visually centered vertically with their title by matching the title's line-height.
 *   Icons used for page or section titles must be unique and representative of the area being referenced.
     *   The H1 icon must match what is used in the sidebar menu icon.
@@ -237,10 +237,10 @@ interface Token {
 ## NAMING CONVENTIONS
 
 *   Use the following semantic names for card typography in CSS:
-    *   &#96;--card-title-font-size&#96;: Uses &#96;--font-size-body&#96; (16-25px) — same size as body text but used with bold/semibold weight
-    *   &#96;--card-title-lg-font-size&#96;: Uses &#96;--font-size-lead&#96; (20-31px) — for larger card titles
-    *   &#96;--card-subtitle-font-size&#96;: Uses &#96;--font-size-body-small&#96; (13-20px) — for card descriptions
-    *   &#96;--card-meta-font-size&#96;: Uses &#96;--font-size-caption&#96; — for metadata
+    *   `--card-title-font-size`: Uses `--font-size-body` (16-25px) — same size as body text but used with bold/semibold weight
+    *   `--card-title-lg-font-size`: Uses `--font-size-lead` (20-31px) — for larger card titles
+    *   `--card-subtitle-font-size`: Uses `--font-size-body-small` (13-20px) — for card descriptions
+    *   `--card-meta-font-size`: Uses `--font-size-caption` — for metadata
 
 ## ERROR HANDLING
 
@@ -257,34 +257,34 @@ interface Token {
 ## TODO LIST
 
 ### Phase 1: Documentation & Updates
-&gt; **Goal:** Update all existing pages with new token data and add comprehensive documentation
+> **Goal:** Update all existing pages with new token data and add comprehensive documentation
 
 The progress tracker reports "28/28 tasks" for Phase 1, but manually counting all checkbox items across sections 1.1-1.7 yields 31 completed items (11+6+6+1+1+1+5). The task count appears to be outdated and does not reflect the actual number of checklist items present in the phase documentation. The updated count is reflected below.
 
 #### 1.1 Data Layer Setup
-- [x] Create TypeScript interfaces for token structure (&#96;lib/types.ts&#96;)
-- [x] Create token parser utility (&#96;lib/tokens/parser.ts&#96;)
-- [x] Create reference resolver utility (&#96;lib/tokens/resolver.ts&#96;)
-- [x] Create dependency chain builder (&#96;lib/tokens/chains.ts&#96;)
-- [x] Set up API route for primitives (&#96;api/tokens/primitives/route.ts&#96;)
-- [x] Set up API route for semantic tokens (&#96;api/tokens/semantic/route.ts&#96;)
-- [x] Set up API route for component tokens (&#96;api/tokens/components/route.ts&#96;)
-- [x] Set up API route for typography (&#96;api/tokens/typography/route.ts&#96;)
-- [x] Set up API route for greenshift (&#96;api/tokens/greenshift/route.ts&#96;)
-- [x] Set up main API route (&#96;api/tokens/route.ts&#96;)
-- [x] Set up export API route (&#96;api/tokens/export/route.ts&#96;)
+- [x] Create TypeScript interfaces for token structure (`lib/types.ts`)
+- [x] Create token parser utility (`lib/tokens/parser.ts`)
+- [x] Create reference resolver utility (`lib/tokens/resolver.ts`)
+- [x] Create dependency chain builder (`lib/tokens/chains.ts`)
+- [x] Set up API route for primitives (`api/tokens/primitives/route.ts`)
+- [x] Set up API route for semantic tokens (`api/tokens/semantic/route.ts`)
+- [x] Set up API route for component tokens (`api/tokens/components/route.ts`)
+- [x] Set up API route for typography (`api/tokens/typography/route.ts`)
+- [x] Set up API route for greenshift (`api/tokens/greenshift/route.ts`)
+- [x] Set up main API route (`api/tokens/route.ts`)
+- [x] Set up export API route (`api/tokens/export/route.ts`)
 
 #### 1.2 Reusable Components
-- [x] Create &#96;TokenChip&#96; component (color swatch + metadata)
-- [x] Create &#96;ColorSwatch&#96; component (enhanced with references)
-- [x] Create &#96;ColorPaletteGrid&#96; component (22 × 11 grid)
-- [x] Create &#96;SpacingVisual&#96; component (visual bar + value)
-- [x] Create &#96;RadiusCurveIcon&#96; component (corner curve visualization)
-- [x] Create &#96;TokenReferenceChain&#96; component (inline reference display)
+- [x] Create `TokenChip` component (color swatch + metadata)
+- [x] Create `ColorSwatch` component (enhanced with references)
+- [x] Create `ColorPaletteGrid` component (22 × 11 grid)
+- [x] Create `SpacingVisual` component (visual bar + value)
+- [x] Create `RadiusCurveIcon` component (corner curve visualization)
+- [x] Create `TokenReferenceChain` component (inline reference display)
 
 #### 1.3 Primitives Documentation
-- [x] Create Primitives overview page (&#96;tokens/primitives/page.tsx&#96;)
-- [x] Create full color palettes page (&#96;tokens/primitives/colors/page.tsx&#96;)
+- [x] Create Primitives overview page (`tokens/primitives/page.tsx`)
+- [x] Create full color palettes page (`tokens/primitives/colors/page.tsx`)
   - Display all 22 color families (Slate through Rose + Base)
   - 11 shades per family (50-950)
   - Copy-to-clipboard for CSS variables and hex values
@@ -294,21 +294,21 @@ The progress tracker reports "28/28 tasks" for Phase 1, but manually counting al
 - [x] Add font weights and line heights documentation
 
 #### 1.4 Semantic Tokens Documentation
-- [x] Create Semantic tokens page (&#96;tokens/semantic/page.tsx&#96;)
+- [x] Create Semantic tokens page (`tokens/semantic/page.tsx`)
   - Color roles: Brand, Secondary, Background, Surface, Text, Card, Border, Status
   - Radius roles: Button, Card, Input, Badge, Modal
   - Layout: ContentWidth, WideWidth, ProseWidth
   - Show reference to primitive source
 
 #### 1.5 Component Tokens Documentation
-- [x] Create Component tokens page (&#96;tokens/components/page.tsx&#96;)
+- [x] Create Component tokens page (`tokens/components/page.tsx`)
   - Button tokens (all variants)
   - Card tokens
   - Input tokens
   - Show reference chain to semantic → primitives
 
 #### 1.6 Greenshift/WordPress Documentation
-- [x] Create Greenshift page (&#96;frameworks/greenshift/page.tsx&#96;)
+- [x] Create Greenshift page (`frameworks/greenshift/page.tsx`)
   - Preset color mappings
   - Custom properties (Button, Card, Input, Badge, Modal)
   - Style global settings
@@ -322,10 +322,10 @@ The progress tracker reports "28/28 tasks" for Phase 1, but manually counting al
 - [x] Update Sidebar navigation with new structure
 
 ### Phase 2: Node Relationship Viewer
-&gt; **Goal:** Interactive horizontal flow diagram showing token reference chains
+> **Goal:** Interactive horizontal flow diagram showing token reference chains
 
 #### 2.1 Flow Diagram Component
-- [ ] Create &#96;TokenFlowDiagram&#96; component
+- [ ] Create `TokenFlowDiagram` component
 - [ ] Implement horizontal layout (Greenshift → Semantic → Primitives → Value)
 - [ ] Add node styling for each layer type
 - [ ] Add connecting lines/arrows between nodes
@@ -333,22 +333,22 @@ The progress tracker reports "28/28 tasks" for Phase 1, but manually counting al
 - [ ] Add click interaction to expand/focus nodes
 
 #### 2.2 Relationships Page
-- [ ] Create Relationships page (&#96;tools/relationships/page.tsx&#96;)
+- [ ] Create Relationships page (`tools/relationships/page.tsx`)
 - [ ] Add token selector (search/dropdown)
 - [ ] Display selected token's full dependency chain
-- [ ] Show \"used by\" references (reverse lookup)
+- [ ] Show "used by" references (reverse lookup)
 - [ ] Add layer filter (show specific layers only)
 
 #### 2.3 Integration
-- [ ] Add \"View Relationships\" button to token chips
+- [ ] Add "View Relationships" button to token chips
 - [ ] Link from documentation pages to relationship viewer
 - [ ] Add mini relationship preview on hover
 
 ### Phase 3: Export/Import API Themer
-&gt; **Goal:** Full playground with live preview, value editing, and theme export
+> **Goal:** Full playground with live preview, value editing, and theme export
 
 #### 3.1 Token Playground
-- [ ] Create Token Explorer page (&#96;tools/explorer/page.tsx&#96;)
+- [ ] Create Token Explorer page (`tools/explorer/page.tsx`)
 - [ ] Implement searchable/filterable token list
 - [ ] Add token type filters (color, number, string)
 - [ ] Add layer filters (Primitive, Semantic, Component, Greenshift)
@@ -358,12 +358,12 @@ The progress tracker reports "28/28 tasks" for Phase 1, but manually counting al
 #### 3.2 Theme Preview Updates
 - [ ] Update Preview page to use API data
 - [ ] Add token variable names on component hover
-- [ ] Implement \"swap primitive reference\" functionality
+- [ ] Implement "swap primitive reference" functionality
 - [ ] Add theme state management
 - [ ] Show active token overrides
 
 #### 3.3 Export API
-- [ ] Create export API route (&#96;api/tokens/export/route.ts&#96;)
+- [ ] Create export API route (`api/tokens/export/route.ts`)
   - Support CSS variables export format
   - Support JSON export format
   - Support Figma-compatible JSON export
@@ -374,7 +374,7 @@ The progress tracker reports "28/28 tasks" for Phase 1, but manually counting al
 - [ ] Create import functionality for custom themes
 - [ ] Add theme presets (default, custom variations)
 - [ ] Implement theme saving (localStorage initially)
-- [ ] Add \"Share Theme\" URL generation
+- [ ] Add "Share Theme" URL generation
 
 ## PROGRESS TRACKER
 
@@ -390,9 +390,75 @@ The progress tracker reports "28/28 tasks" for Phase 1, but manually counting al
 
 *   The section title for Foundations must be renamed to Primitives.
 *   The current Primitive page must be the primitives Overview page, followed by the Colors, Typography, Spacing & Layout pages, so the section follows the same order and hierarchy as the others.
-*   When clicking \"Primitives Overview\" then \"Colors,\" the active state should only be applied to the \"Colors\" menu item. The &#96;isActive&#96; function in &#96;Sidebar.tsx&#96; must use exact path matching to prevent both \"Overview\" and \"Colors\" from appearing active simultaneously. The original logic using &#96;startsWith&#96; has been replaced with exact matching.
+*   When clicking "Primitives Overview" then "Colors," the active state should only be applied to the "Colors" menu item. The `isActive` function in `Sidebar.tsx` must use exact path matching to prevent both "Overview" and "Colors" from appearing active simultaneously. The original logic using `startsWith` has been replaced with exact matching.
 *   The reference chain on the Greenshift page must flow left-to-right from raw to semantic, showing the primitive/raw value on the left flowing through to the framework-specific output on the right.
 
 ## MODERNIZATION PLAN
 
-The following rules should be followed when modernizing the design system:\n\n### 1. Color Standardization\n*   Stats and headers should use a strict theme:\n    *   &#96;var(--color-brand)&#96; (Teal) for active elements and key values.\n    *   &#96;var(--color-secondary)&#96; (Deep Purple) for architectural/structural elements.\n    *   Neutral grays for labels and secondary text to reduce visual noise.\n\n### 2. Component Consistency\n*   \"Stats\" and \"Callouts\" should be styled consistently:\n    *   Unified Stats Cards: Standardize to a clean, single-style card using the Brand color for data and Neutrals for labels.\n    *   Standardized Callouts: Create a consistent pattern for \"Info\" and \"Note\" boxes using semantic background tints (e.g., &#96;rgba(var(--color-brand-rgb), 0.05)&#96;).\n\n### 3. Typography Refinement\n*   The documentation site should use the **Major Second (Conservative)** scale to prevent large type scale jumps. This creates a more professional, readable rhythm suitable for documentation.\n\n### 4. Copy Button Implementation\n*   All copy buttons should transform the display of variables, specifically those like &#96;var()&#96;, into actual copy buttons with icons. This should be implemented across all pages, including &#96;PrimitivesPage&#96;.\n\n### 5. Modernization 2.0 Guidelines\n*   When updating pages to match the new \"Modernization 2.0\" style of the Design System documentation, follow these strict guidelines:\n\n    *   **Color System &amp; Theming:**\n        *   Eliminate Random Colors: Do not use arbitrary colors (orange, green, blue) for decoration.\n        *   Primary Theme (Action/Data): Use &#96;var(--color-brand)&#96; (Teal) for interactive elements, links, and key data values (like numbers in stats cards).\n        *   Secondary Theme (Structure): Use &#96;var(--color-secondary)&#96; (Deep Purple) for architectural elements, section headers, and page-level icons.\n        *   Neutral Foundation: Use &#96;var(--color-muted)&#96; for labels and secondary text.\n        *   Backgrounds: Replace hardcoded hex tints (e.g., &#96;#3b82f610&#96;) with semantic &#96;rgba&#96; values or standard tokens if available.\n    *   **Typography:**\n        *   Scale: Ensure all headings use the Major Second (&#96;--ms&#96;) scale (e.g., &#96;var(--font-size-h2--ms)&#96;) to prevent jarring size jumps.\n        *   Body: Use &#96;var(--line-height-relaxed)&#96; for descriptive paragraphs (&#96;max_width: 65ch&#96;).\n    *   **Components &amp; Patterns:**\n        *   TokenCopyButton: Replace any static text display of CSS variables (e.g., &#96;var(--my-token)&#96;) with the &#96;&lt;TokenCopyButton /&gt;&#96; component.\n            *   *Import:* &#96;import { TokenCopyButton } from '@/components/tokens/TokenCopyButton';&#96;\n            *   *Usage:* &#96;&lt;TokenCopyButton value=\"var(--token-name)\" displayValue=\"--token-name\" variant=\"primary\" /&gt;&#96;\n        *   Page Header: Follow the standard pattern:\n            1.  Breadcrumbs (Links: Muted -&gt; Current: Foreground).\n            2.  Icon Box: 56x56px, Rounded-XL, using &#96;var(--color-secondary)&#96; for the icon and a 10% opacity tint for the background.\n            3.  Title: H2 weight 700.\n            4.  Description: Body size, Muted color.\n        *   Stats/Cards: Uniform design:\n            *   Value: &#96;var(--color-brand)&#96;, Bold, H4 size.\n            *   Label: &#96;var(--color-muted)&#96;, Caption size, Uppercase tracking.\n            *   Container: &#96;var(--color-card)&#96; background, &#96;var(--radius-xl)&#96; border radius, standard border.\n    *   **Layout:**\n        *   Ensure strictly 4px/8px grid usage (&#96;var(--spacing-4)&#96;, &#96;var(--spacing-8)&#96;).\n        *   Align all content to &#96;max_width: var(--layout-6xl)&#96;.\n\n### 6. Icon Styling\n\n*   Main page title icons: Larger colored icon with neutral background and matching colored border.\n*   Smaller section icons: Colored icon only with no border or background.\n  * Page header icon box (56x56px):\n    * Background: neutral (like &#96;var(--color-card)&#96; or &#96;rgba(0,0,0,0.03)&#96;)\n    * Border: 1px solid matching the icon color (brand or secondary)\n    * Icon: colored (brand or secondary)\n\n### 7. Icon Style Summary\n\n| Element | Style |\n|---|---|\n| Page Header Icon Box |  Background: neutral, Border: 1px solid [icon color], Icon: colored |\n| Section Header Icons |  No background, No border, Icon: colored |\n\n### 8. Plan of Action\n1.  Update &#96;globals.css&#96;: Remap semantic typography tokens to the Major Second (&#96;--ms&#96;) scale.\n2.  Refactor Pages: Update &#96;Primitives&#96;, &#96;Components&#96;, and &#96;Typography&#96; pages to remove inline styles and apply the new color theme and copy button implementation.
+The following rules should be followed when modernizing the design system:
+
+### 1. Color Standardization
+*   Stats and headers should use a strict theme:
+    *   `var(--color-brand)` (Teal) for active elements and key values.
+    *   `var(--color-secondary)` (Deep Purple) for architectural/structural elements.
+    *   Neutral grays for labels and secondary text to reduce visual noise.
+
+### 2. Component Consistency
+*   "Stats" and "Callouts" should be styled consistently:
+    *   Unified Stats Cards: Standardize to a clean, single-style card using the Brand color for data and Neutrals for labels.
+    *   Standardized Callouts: Create a consistent pattern for "Info" and "Note" boxes using semantic background tints (e.g., `rgba(var(--color-brand-rgb), 0.05)`).
+
+### 3. Typography Refinement
+*   The documentation site should use the **Major Second (Conservative)** scale to prevent large type scale jumps. This creates a more professional, readable rhythm suitable for documentation.
+
+### 4. Copy Button Implementation
+*   All copy buttons should transform the display of variables, specifically those like `var()`, into actual copy buttons with icons. This should be implemented across all pages, including `PrimitivesPage`.
+
+### 5. Modernization 2.0 Guidelines
+*   When updating pages to match the new "Modernization 2.0" style of the Design System documentation, follow these strict guidelines:
+
+    *   **Color System & Theming:**
+        *   Eliminate Random Colors: Do not use arbitrary colors (orange, green, blue) for decoration.
+        *   Primary Theme (Action/Data): Use `var(--color-brand)` (Teal) for interactive elements, links, and key data values (like numbers in stats cards).
+        *   Secondary Theme (Structure): Use `var(--color-secondary)` (Deep Purple) for architectural elements, section headers, and page-level icons.
+        *   Neutral Foundation: Use `var(--color-muted)` for labels and secondary text.
+        *   Backgrounds: Replace hardcoded hex tints (e.g., `#3b82f610`) with semantic `rgba` values or standard tokens if available.
+    *   **Typography:**
+        *   Scale: Ensure all headings use the Major Second (`--ms`) scale (e.g., `var(--font-size-h2--ms)`) to prevent jarring size jumps.
+        *   Body: Use `var(--line-height-relaxed)` for descriptive paragraphs (`max_width: 65ch`).
+    *   **Components & Patterns:**
+        *   TokenCopyButton: Replace any static text display of CSS variables (e.g., `var(--my-token)`) with the `<TokenCopyButton />` component.
+            *   *Import:* `import { TokenCopyButton } from '@/components/tokens/TokenCopyButton';`
+            *   *Usage:* `<TokenCopyButton value="var(--token-name)" displayValue="--token-name" variant="primary" />`
+        *   Page Header: Follow the standard pattern:
+            1.  Breadcrumbs (Links: Muted -> Current: Foreground).
+            2.  Icon Box: 56x56px, Rounded-XL, using `var(--color-secondary)` for the icon and a 10% opacity tint for the background.
+            3.  Title: H2 weight 700.
+            4.  Description: Body size, Muted color.
+        *   Stats/Cards: Uniform design:
+            *   Value: `var(--color-brand)`, Bold, H4 size.
+            *   Label: `var(--color-muted)`, Caption size, Uppercase tracking.
+            *   Container: `var(--color-card)` background, `var(--radius-xl)` border radius, standard border.
+    *   **Layout:**
+        *   Ensure strictly 4px/8px grid usage (`var(--spacing-4)`, `var(--spacing-8)`).
+        *   Align all content to `max_width: var(--layout-6xl)`.
+
+### 6. Icon Styling
+
+*   Main page title icons: Larger colored icon with neutral background and matching colored border.
+*   Smaller section icons: Colored icon only with no border or background.
+  * Page header icon box (56x56px):
+    * Background: neutral (like `var(--color-card)` or `rgba(0,0,0,0.03)`)
+    * Border: 1px solid matching the icon color (brand or secondary)
+    * Icon: colored (brand or secondary)
+
+### 7. Icon Style Summary
+
+| Element | Style |
+|---|---|
+| Page Header Icon Box |  Background: neutral, Border: 1px solid [icon color], Icon: colored |
+| Section Header Icons |  No background, No border, Icon: colored |
+
+### 8. Plan of Action
+1.  Update `globals.css`: Remap semantic typography tokens to the Major Second (`--ms`) scale.
+2.  Refactor Pages: Update `Primitives`, `Components`, and `Typography` pages to remove inline styles and apply the new color theme and copy button implementation.
