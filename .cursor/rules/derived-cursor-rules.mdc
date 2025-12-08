@@ -15,11 +15,12 @@ globs: *
 ## PROJECT DOCUMENTATION & CONTEXT SYSTEM
 
 *   **Last Updated:** December 8, 2025
-*   **Status:** Implementation In Progress
-*   **Current Phase:** Phase 2.1 - Token Flow Diagram Component
+*   **Status:** Phase 4 Specification Complete - Ready for Implementation
+*   **Current Phase:** Phase 4 - Theme Generator
 *   When updating the design system app's UI, always use the design system itself and best practices in UI and visual rhythm to standardize the use of color, giving each color a purpose. Prefer shades over using too many distracting colors.
 *   When modernizing the design system, follow the "Modernization 2.0" style guidelines, which include strict guidelines for the color system, typography, and component usage.
 *   Reference the `styleguide.md` file for detailed Modernization 2.0 style rules.
+*   Refer to the existing UI and `@design-system-ui/styleguide.md` when updating the theme generator plan to incorporate style constraints and functional specifications.
 
 ### Token Architecture Layers
 
@@ -70,12 +71,10 @@ src/
 │   │   ├── primitives/
 │   │   │   ├── page.tsx              (Primitives overview)
 │   │   │   └── colors/page.tsx       (22 color palettes)
-│   │   ├── semantic/page.tsx         (Semantic tokens)
-│   │   ├── components/page.tsx         (Component tokens)
+│   │   ├── semantic/page.tsx         (Semantic tokens)\n│   │   ├── components/page.tsx         (Component tokens)
 │   │   ├── colors/page.tsx           (UPDATE existing)
 │   │   ├── typography/page.tsx       (UPDATE existing)
-│   │   └── spacing/page.tsx          (UPDATE existing)
-│   ├── frameworks/
+│   │   └── spacing/page.tsx          (UPDATE existing)\n│   ├── frameworks/
 │   │   └── greenshift/page.tsx       (WordPress mapping)
 │   ├── tools/
 │   │   ├── explorer/page.tsx         (Token playground)
@@ -99,7 +98,6 @@ src/
 │   │   ├── resolver.ts               (Resolve references)
 │   │   ├── chains.ts                 (Build dependency chains)
 │   │   └── export.ts                 (Export utilities)
-│   │   └── index.ts
 │   └── types.ts                      (TypeScript interfaces)
 └── data/
     └── tokens/                       (Cached/imported token data)
@@ -200,6 +198,7 @@ interface Token {
 *   Use `--line-height-snug` (1.25) for subtext and body copy line heights across all pages.
 *   The border radius section on the spacing page should use the same clean table-based design with filled green squares that is used on the semantic tokens page.
 *   All copy buttons should make the variable listed like var() the actual button with copy icon in it.
+*   Components used in the theme generator mockup must adhere to consistent component creation specifications to avoid inconsistencies in displaying variables.
 
 ## DEBUGGING
 
@@ -321,29 +320,6 @@ The progress tracker reports "28/28 tasks" for Phase 1, but manually counting al
 - [x] Update Home page with accurate token counts
 - [x] Update Sidebar navigation with new structure
 
-### Phase 2: Node Relationship Viewer
-> **Goal:** Interactive horizontal flow diagram showing token reference chains
-
-#### 2.1 Flow Diagram Component
-- [ ] Create `TokenFlowDiagram` component
-- [ ] Implement horizontal layout (Greenshift → Semantic → Primitives → Value)
-- [ ] Add node styling for each layer type
-- [ ] Add connecting lines/arrows between nodes
-- [ ] Add hover states showing full chain
-- [ ] Add click interaction to expand/focus nodes
-
-#### 2.2 Relationships Page
-- [ ] Create Relationships page (`tools/relationships/page.tsx`)
-- [ ] Add token selector (search/dropdown)
-- [ ] Display selected token's full dependency chain
-- [ ] Show "used by" references (reverse lookup)
-- [ ] Add layer filter (show specific layers only)
-
-#### 2.3 Integration
-- [ ] Add "View Relationships" button to token chips
-- [ ] Link from documentation pages to relationship viewer
-- [ ] Add mini relationship preview on hover
-
 ### Phase 3: Export/Import API Themer
 > **Goal:** Full playground with live preview, value editing, and theme export
 
@@ -376,6 +352,29 @@ The progress tracker reports "28/28 tasks" for Phase 1, but manually counting al
 - [ ] Implement theme saving (localStorage initially)
 - [ ] Add "Share Theme" URL generation
 
+### Phase 4: Theme Generator Component Specifications and Plan
+
+#### 4.1 Theme Generator Components
+- [ ] Create `ThemeBuilderContext` for state management of the "Draft Theme".
+- [ ] Initial state of `ThemeBuilderContext` should populate from existing JSON token files.
+- [ ] Action: `updateSemanticColor(role: 'Brand', primitive: 'Indigo', step: 500)`
+- [ ] Create `TokenMapper`: A dropdown listing Primitives (with their color swatches) and assigning them to a Semantic slot.
+- [ ] Create `VariableInjector`: A wrapper component that writes the current state to inline `style` variables, ensuring performant, instant updates without re-compiling CSS.
+- [ ] Create HTML mockup of the Theme Generator.
+
+#### 4.2 Theme Generator Functionality
+- [ ] Educational Visualization: UI must explicitly label the layers: `Primitive Source` → `Semantic Token` → `Component Instance`.
+- [ ] Allow rapid prototyping of a new visual identity (e.g., "What if our brand was Indigo instead of Emerald?").
+- [ ] **Color**: Select Primitive families (e.g., Blue, Slate) for key Semantic roles (Brand, Surface, Status).
+- [ ] **Tweak**: Sliders for fine-tuning (Shade/Tint adjustments).
+- [ ] **Globals**: Sliders for `Radius` (Small vs. Round) and `Typography` scale (Major Second vs. Major Third).
+- [ ] Users need to see "real" results, not just abstract swatches in a "Live Mockup" section featuring common UI patterns: a Dashboard Card, a Form, a Modal, and Navigation components. These must react instantly to variable changes.
+- [ ] A simple "Export Theme" button that generates a JSON file. This file mimics the structure of `tokens/03-Semantic.json`, ready for import into the Figma Variables plugin.
+
+#### 4.3 Theme Generator Interface Layout
+- [ ] **Sidebar/Panel**: "Controls" area. Grouped by "Color Mapping", "Typography", and "Shape".
+- [ ] **Main Stage**: "Preview" area. A sticky or scrollable view of the Mockup UI.
+
 ## PROGRESS TRACKER
 
 | Phase | Status | Progress |
@@ -383,8 +382,9 @@ The progress tracker reports "28/28 tasks" for Phase 1, but manually counting al
 | Phase 1: Documentation | 🟢 Complete | 31/31 tasks |
 | Phase 2: Relationships | ⚪ Pending | 0/14 tasks |
 | Phase 3: Export/Import | ⚪ Pending | 0/17 tasks |
+| Phase 4: Theme Generator | ⚪ Pending | 0/13 tasks |
 
-**Total Progress:** 31/62 tasks (50%)
+**Total Progress:** 31/75 tasks (41%)
 
 ## SIDEBAR RULES
 
@@ -462,3 +462,102 @@ The following rules should be followed when modernizing the design system:
 ### 8. Plan of Action
 1.  Update `globals.css`: Remap semantic typography tokens to the Major Second (`--ms`) scale.
 2.  Refactor Pages: Update `Primitives`, `Components`, and `Typography` pages to remove inline styles and apply the new color theme and copy button implementation.
+
+### Theme Generator & Previewer Feature Requirements
+
+**Core Mission:** Bridge the gap between abstract tokens and tangible UI design, empowering users to "paint" with the system.
+
+*   **Educational Visualization**:
+    *   **Goal**: Demystify the "cascade." Show that changing the "Brand" semantic token isn't just picking a color; it's selecting a *Primitive*.
+    *   **Requirement**: UI must explicitly label the layers: `Primitive Source` → `Semantic Token` → `Component Instance`.
+
+*   **Live Exploration (The "Playground")**:
+    *   **Goal**: Allow rapid prototyping of a new visual identity (e.g., "What if our brand was Indigo instead of Emerald?").
+    *   **Requirement**:
+        *   **Color**: Select Primitive families (e.g., Blue, Slate) for key Semantic roles (Brand, Surface, Status).
+        *   **Tweak**: Sliders for fine-tuning (Shade/Tint adjustments).
+        *   **Globals**: Sliders for `Radius` (Small vs. Round) and `Typography` scale (Major Second vs. Major Third).
+
+*   **Fidelity & Preview**:
+    *   **Goal**: Users need to see "real" results, not just abstract swatches.
+    *   **Requirement**: A "Live Mockup" section featuring common UI patterns: a Dashboard Card, a Form, a Modal, and Navigation components. These must react instantly to variable changes.
+
+*   **Exportability**:
+    *   **Goal**: Handover to design.
+    *   **Requirement**: A simple "Export Theme" button that generates a JSON file. This file mimics the structure of `tokens/03-Semantic.json`, ready for import into the Figma Variables plugin.
+
+### 2. Implementation Plan
+
+1.  **State Management (`ThemeBuilderContext`)**:
+    *   Create a React Context to hold the "Draft Theme" state.
+    *   Initial state populates from the existing JSON token files.
+    *   **Action**: `updateSemanticColor(role: 'Brand', primitive: 'Indigo', step: 500)`
+
+2.  **The Interface Layout**:
+    *   **Sidebar/Panel**: "Controls" area. Grouped by "Color Mapping", "Typography", and "Shape".
+    *   **Main Stage**: "Preview" area. A sticky or scrollable view of the Mockup UI.
+
+3.  **Key Components**:
+    *   `TokenMapper`: A specialized dropdown that lists Primitives (with their color swatches) and assigns them to a Semantic slot.
+    *   `VariableInjector`: A wrapper component that writes the current state to inline `style` variables (e.g., `style={{ '--color-brand-default': 'var(--color-indigo-500)' }}`), ensuring performant, instant updates without re-compiling CSS.
+
+### 3. Theme Generator Mockup (HTML/Tailwind)
+
+The AI can generate an HTML mockup of the Theme Generator.
+
+Here is a high-fidelity mockup using HTML and Tailwind classes to demonstrate the layout and interaction model.
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Design System - Theme Generator</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Simulating the System Variables for the Preview */
+        :root {
+            --radius-preview: 0.5rem;
+            --font-preview: sans-serif;
+            --color-brand-preview: #10b981; /* Default Emerald-500 */
+            --color-brand-contrast: #ffffff;
+            --color-bg-preview: #f8fafc;
+            --color-surface-preview: #ffffff;
+            --color-text-preview: #0f172a;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-900 h-screen flex flex-col overflow-hidden font-sans">
+
+    <!-- Header -->
+    <header class="bg-white border-b border-gray-200 h-16 flex items-center justify-between px-6 shrink-0 z-10">
+        <div class="flex items-center gap-3">
+            <div class="w-8 h-8 bg-black rounded-lg flex items-center justify-center text-white font-bold">DS</div>
+            <h1 class="font-semibold text-lg text-gray-900">Theme Generator</h1>
+            <span class="bg-gray-100 text-gray-500 text-xs px-2 py-0.5 rounded-full">Beta</span>
+        </div>
+        <div class="flex items-center gap-3">
+            <button class="text-sm font-medium text-gray-600 hover:text-gray-900 px-3 py-1.5">Reset</button>
+            <button class="bg-black text-white text-sm font-medium px-4 py-2 rounded-md hover:bg-gray-800 flex items-center gap-2">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                Export JSON
+            </button>
+        </div>
+    </header>
+
+    <!-- Main Workspace -->
+    <div class="flex flex-1 overflow-hidden">
+        
+        <!-- LEFT: Controls Panel -->
+        <aside class="w-96 bg-white border-r border-gray-200 overflow-y-auto flex flex-col">
+            
+            <!-- Global Settings -->
+            <div class="p-6 border-b border-gray-100">
+                <h2 class="text-xs font-bold text-gray-400 uppercase tracking-wider mb-4">Global Tokens</h2>
+                
+                <div class="space-y-6">
+                    <!-- Radius Control -->
+                    <div>
+                        <div class="flex justify-between items-center mb-2">
+                            <label class="text-sm font-medium text-gray-700">Corner Radius</
