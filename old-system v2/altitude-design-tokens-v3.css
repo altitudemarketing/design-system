@@ -1,0 +1,939 @@
+/**
+ * ============================================================
+ * ALTITUDE DESIGN SYSTEM - CSS Custom Properties v3.0
+ * ============================================================
+ * Framework-agnostic tokens for Figma, Greenlight, & Elementor
+ * Version: 3.0.0 | Light Mode | 8px Grid System
+ * 
+ * Architecture:
+ *   1. Color Primitives → Raw color values (Tailwind palette)
+ *   2. Primitives       → Raw spacing, sizing, effects
+ *   3. Semantic         → Role-based aliases
+ *   4. Component        → Scoped component tokens
+ * 
+ * Figma Import Format:
+ *   /* Collection name: X */ defines a Figma variable collection
+ *   /* Mode: Y */ defines a mode within that collection
+ *   var(--variable-name) creates alias references in Figma
+ * 
+ * wpVar = The Greenlight/WordPress variable each token maps to
+ * ============================================================
+ */
+
+
+/* ============================================================
+   COLOR PRIMITIVES - Tailwind Color Palette
+   ============================================================ */
+
+/* Collection name: Color Primitives */
+/* Mode: Default */
+:root {
+  /* -------- Slate -------- */
+  --slate-50: #f8fafc;
+  --slate-100: #f1f5f9;
+  --slate-200: #e2e8f0;
+  --slate-300: #cbd5e1;
+  --slate-400: #94a3b8;
+  --slate-500: #64748b;
+  --slate-600: #475569;
+  --slate-700: #334155;
+  --slate-800: #1e293b;
+  --slate-900: #0f172a;
+  --slate-950: #020617;
+
+  /* -------- Gray -------- */
+  --gray-50: #f9fafb;
+  --gray-100: #f3f4f6;
+  --gray-200: #e5e7eb;
+  --gray-300: #d1d5db;
+  --gray-400: #9ca3af;
+  --gray-500: #6b7280;
+  --gray-600: #4b5563;
+  --gray-700: #374151;
+  --gray-800: #1f2937;
+  --gray-900: #111827;
+  --gray-950: #030712;
+
+  /* -------- Zinc -------- */
+  --zinc-50: #fafafa;
+  --zinc-100: #f4f4f5;
+  --zinc-200: #e4e4e7;
+  --zinc-300: #d4d4d8;
+  --zinc-400: #a1a1aa;
+  --zinc-500: #71717a;
+  --zinc-600: #52525b;
+  --zinc-700: #3f3f46;
+  --zinc-800: #27272a;
+  --zinc-900: #18181b;
+  --zinc-950: #09090b;
+
+  /* -------- Neutral -------- */
+  --neutral-50: #fafafa;
+  --neutral-100: #f5f5f5;
+  --neutral-200: #e5e5e5;
+  --neutral-300: #d4d4d4;
+  --neutral-400: #a3a3a3;
+  --neutral-500: #737373;
+  --neutral-600: #525252;
+  --neutral-700: #404040;
+  --neutral-800: #262626;
+  --neutral-900: #171717;
+  --neutral-950: #0a0a0a;
+
+  /* -------- Stone -------- */
+  --stone-50: #fafaf9;
+  --stone-100: #f5f5f4;
+  --stone-200: #e7e5e4;
+  --stone-300: #d6d3d1;
+  --stone-400: #a8a29e;
+  --stone-500: #78716c;
+  --stone-600: #57534e;
+  --stone-700: #44403c;
+  --stone-800: #292524;
+  --stone-900: #1c1917;
+  --stone-950: #0c0a09;
+
+  /* -------- Red -------- */
+  --red-50: #fef2f2;
+  --red-100: #fee2e2;
+  --red-200: #fecaca;
+  --red-300: #fca5a5;
+  --red-400: #f87171;
+  --red-500: #ef4444;
+  --red-600: #dc2626;
+  --red-700: #b91c1c;
+  --red-800: #991b1b;
+  --red-900: #7f1d1d;
+  --red-950: #450a0a;
+
+  /* -------- Orange -------- */
+  --orange-50: #fff7ed;
+  --orange-100: #ffedd5;
+  --orange-200: #fed7aa;
+  --orange-300: #fdba74;
+  --orange-400: #fb923c;
+  --orange-500: #f97316;
+  --orange-600: #ea580c;
+  --orange-700: #c2410c;
+  --orange-800: #9a3412;
+  --orange-900: #7c2d12;
+  --orange-950: #431407;
+
+  /* -------- Amber -------- */
+  --amber-50: #fffbeb;
+  --amber-100: #fef3c7;
+  --amber-200: #fde68a;
+  --amber-300: #fcd34d;
+  --amber-400: #fbbf24;
+  --amber-500: #f59e0b;
+  --amber-600: #d97706;
+  --amber-700: #b45309;
+  --amber-800: #92400e;
+  --amber-900: #78350f;
+  --amber-950: #451a03;
+
+  /* -------- Yellow -------- */
+  --yellow-50: #fefce8;
+  --yellow-100: #fef9c3;
+  --yellow-200: #fef08a;
+  --yellow-300: #fde047;
+  --yellow-400: #facc15;
+  --yellow-500: #eab308;
+  --yellow-600: #ca8a04;
+  --yellow-700: #a16207;
+  --yellow-800: #854d0e;
+  --yellow-900: #713f12;
+  --yellow-950: #422006;
+
+  /* -------- Lime -------- */
+  --lime-50: #f7fee7;
+  --lime-100: #ecfccb;
+  --lime-200: #d9f99d;
+  --lime-300: #bef264;
+  --lime-400: #a3e635;
+  --lime-500: #84cc16;
+  --lime-600: #65a30d;
+  --lime-700: #4d7c0f;
+  --lime-800: #3f6212;
+  --lime-900: #365314;
+  --lime-950: #1a2e05;
+
+  /* -------- Green -------- */
+  --green-50: #f0fdf4;
+  --green-100: #dcfce7;
+  --green-200: #bbf7d0;
+  --green-300: #86efac;
+  --green-400: #4ade80;
+  --green-500: #22c55e;
+  --green-600: #16a34a;
+  --green-700: #15803d;
+  --green-800: #166534;
+  --green-900: #14532d;
+  --green-950: #052e16;
+
+  /* -------- Emerald -------- */
+  --emerald-50: #ecfdf5;
+  --emerald-100: #d1fae5;
+  --emerald-200: #a7f3d0;
+  --emerald-300: #6ee7b7;
+  --emerald-400: #34d399;
+  --emerald-500: #10b981;
+  --emerald-600: #059669;
+  --emerald-700: #047857;
+  --emerald-800: #065f46;
+  --emerald-900: #064e3b;
+  --emerald-950: #022c22;
+
+  /* -------- Teal -------- */
+  --teal-50: #f0fdfa;
+  --teal-100: #ccfbf1;
+  --teal-200: #99f6e4;
+  --teal-300: #5eead4;
+  --teal-400: #2dd4bf;
+  --teal-500: #14b8a6;
+  --teal-600: #0d9488;
+  --teal-700: #0f766e;
+  --teal-800: #115e59;
+  --teal-900: #134e4a;
+  --teal-950: #042f2e;
+
+  /* -------- Cyan -------- */
+  --cyan-50: #ecfeff;
+  --cyan-100: #cffafe;
+  --cyan-200: #a5f3fc;
+  --cyan-300: #67e8f9;
+  --cyan-400: #22d3ee;
+  --cyan-500: #06b6d4;
+  --cyan-600: #0891b2;
+  --cyan-700: #0e7490;
+  --cyan-800: #155e75;
+  --cyan-900: #164e63;
+  --cyan-950: #083344;
+
+  /* -------- Sky -------- */
+  --sky-50: #f0f9ff;
+  --sky-100: #e0f2fe;
+  --sky-200: #bae6fd;
+  --sky-300: #7dd3fc;
+  --sky-400: #38bdf8;
+  --sky-500: #0ea5e9;
+  --sky-600: #0284c7;
+  --sky-700: #0369a1;
+  --sky-800: #075985;
+  --sky-900: #0c4a6e;
+  --sky-950: #082f49;
+
+  /* -------- Blue -------- */
+  --blue-50: #eff6ff;
+  --blue-100: #dbeafe;
+  --blue-200: #bfdbfe;
+  --blue-300: #93c5fd;
+  --blue-400: #60a5fa;
+  --blue-500: #3b82f6;
+  --blue-600: #2563eb;
+  --blue-700: #1d4ed8;
+  --blue-800: #1e40af;
+  --blue-900: #1e3a8a;
+  --blue-950: #172554;
+
+  /* -------- Indigo -------- */
+  --indigo-50: #eef2ff;
+  --indigo-100: #e0e7ff;
+  --indigo-200: #c7d2fe;
+  --indigo-300: #a5b4fc;
+  --indigo-400: #818cf8;
+  --indigo-500: #6366f1;
+  --indigo-600: #4f46e5;
+  --indigo-700: #4338ca;
+  --indigo-800: #3730a3;
+  --indigo-900: #312e81;
+  --indigo-950: #1e1b4b;
+
+  /* -------- Violet -------- */
+  --violet-50: #f5f3ff;
+  --violet-100: #ede9fe;
+  --violet-200: #ddd6fe;
+  --violet-300: #c4b5fd;
+  --violet-400: #a78bfa;
+  --violet-500: #8b5cf6;
+  --violet-600: #7c3aed;
+  --violet-700: #6d28d9;
+  --violet-800: #5b21b6;
+  --violet-900: #4c1d95;
+  --violet-950: #2e1065;
+
+  /* -------- Purple -------- */
+  --purple-50: #faf5ff;
+  --purple-100: #f3e8ff;
+  --purple-200: #e9d5ff;
+  --purple-300: #d8b4fe;
+  --purple-400: #c084fc;
+  --purple-500: #a855f7;
+  --purple-600: #9333ea;
+  --purple-700: #7e22ce;
+  --purple-800: #6b21a8;
+  --purple-900: #581c87;
+  --purple-950: #3b0764;
+
+  /* -------- Fuchsia -------- */
+  --fuchsia-50: #fdf4ff;
+  --fuchsia-100: #fae8ff;
+  --fuchsia-200: #f5d0fe;
+  --fuchsia-300: #f0abfc;
+  --fuchsia-400: #e879f9;
+  --fuchsia-500: #d946ef;
+  --fuchsia-600: #c026d3;
+  --fuchsia-700: #a21caf;
+  --fuchsia-800: #86198f;
+  --fuchsia-900: #701a75;
+  --fuchsia-950: #4a044e;
+
+  /* -------- Pink -------- */
+  --pink-50: #fdf2f8;
+  --pink-100: #fce7f3;
+  --pink-200: #fbcfe8;
+  --pink-300: #f9a8d4;
+  --pink-400: #f472b6;
+  --pink-500: #ec4899;
+  --pink-600: #db2777;
+  --pink-700: #be185d;
+  --pink-800: #9d174d;
+  --pink-900: #831843;
+  --pink-950: #500724;
+
+  /* -------- Rose -------- */
+  --rose-50: #fff1f2;
+  --rose-100: #ffe4e6;
+  --rose-200: #fecdd3;
+  --rose-300: #fda4af;
+  --rose-400: #fb7185;
+  --rose-500: #f43f5e;
+  --rose-600: #e11d48;
+  --rose-700: #be123c;
+  --rose-800: #9f1239;
+  --rose-900: #881337;
+  --rose-950: #4c0519;
+
+  /* -------- Base Colors -------- */
+  --white: #ffffff;
+  --black: #000000;
+  --transparent: transparent;
+}
+
+
+/* ============================================================
+   PRIMITIVES - Spacing, Sizing, Effects
+   ============================================================ */
+
+/* Collection name: Primitives */
+/* Mode: Default */
+:root {
+  /* -------- Spacing (4px/8px Grid) -------- */
+  --spacing-0: 0px;
+  --spacing-px: 1px;
+  --spacing-0-5: 2px;
+  --spacing-1: 4px;
+  --spacing-1-5: 6px;
+  --spacing-2: 8px;
+  --spacing-2-5: 10px;
+  --spacing-3: 12px;
+  --spacing-3-5: 14px;
+  --spacing-4: 16px;
+  --spacing-5: 20px;
+  --spacing-6: 24px;
+  --spacing-7: 28px;
+  --spacing-8: 32px;
+  --spacing-9: 36px;
+  --spacing-10: 40px;
+  --spacing-12: 48px;
+  --spacing-14: 56px;
+  --spacing-16: 64px;
+  --spacing-20: 80px;
+  --spacing-24: 96px;
+  --spacing-32: 128px;
+  --spacing-40: 160px;
+  --spacing-48: 192px;
+  --spacing-56: 224px;
+  --spacing-64: 256px;
+
+  /* -------- Border Radius -------- */
+  --radius-none: 0px;
+  --radius-sm: 2px;
+  --radius-md: 4px;
+  --radius-lg: 6px;
+  --radius-xl: 8px;
+  --radius-2xl: 12px;
+  --radius-3xl: 16px;
+  --radius-4xl: 24px;
+  --radius-full: 9999px;
+
+  /* -------- Line Height -------- */
+  --line-height-none: 1;
+  --line-height-tight: 1.25;
+  --line-height-snug: 1.375;
+  --line-height-normal: 1.5;
+  --line-height-relaxed: 1.625;
+  --line-height-loose: 2;
+
+  /* -------- Font Weight -------- */
+  --font-weight-thin: 100;
+  --font-weight-light: 300;
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  --font-weight-extrabold: 800;
+  --font-weight-black: 900;
+
+  /* -------- Layout Sizes -------- */
+  --layout-size-xs: 320px;
+  --layout-size-sm: 384px;
+  --layout-size-md: 448px;
+  --layout-size-lg: 512px;
+  --layout-size-xl: 576px;
+  --layout-size-2xl: 672px;
+  --layout-size-3xl: 768px;
+  --layout-size-4xl: 896px;
+  --layout-size-5xl: 1024px;
+  --layout-size-6xl: 1152px;
+  --layout-size-7xl: 1280px;
+
+  /* -------- Element Sizes -------- */
+  --size-4: 16px;
+  --size-5: 20px;
+  --size-6: 24px;
+  --size-8: 32px;
+  --size-10: 40px;
+  --size-12: 48px;
+  --size-14: 56px;
+  --size-16: 64px;
+  --size-20: 80px;
+  --size-24: 96px;
+  --size-32: 128px;
+  --size-40: 160px;
+  --size-48: 192px;
+
+  /* -------- Shadows -------- */
+  --shadow-xs: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --shadow-sm: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+  --shadow-2xl: 0 25px 50px -12px rgb(0 0 0 / 0.25);
+  --shadow-inner: inset 0 2px 4px 0 rgb(0 0 0 / 0.05);
+
+  /* -------- Durations -------- */
+  --duration-75: 75ms;
+  --duration-100: 100ms;
+  --duration-150: 150ms;
+  --duration-200: 200ms;
+  --duration-300: 300ms;
+  --duration-500: 500ms;
+  --duration-700: 700ms;
+  --duration-1000: 1000ms;
+
+  /* -------- Easings -------- */
+  --ease-linear: linear;
+  --ease-in: cubic-bezier(0.4, 0, 1, 1);
+  --ease-out: cubic-bezier(0, 0, 0.2, 1);
+  --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-bounce: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+
+/* ============================================================
+   TYPOGRAPHY PRIMITIVES - Major Second Scale (1.125)
+   Mobile/Desktop modes for Figma, clamp for CSS
+   ============================================================ */
+
+/* Collection name: Typography - Major Second */
+/* Mode: Mobile */
+:root {
+  --font-size-2xs--ms-mobile: 10px;
+  --font-size-xs--ms-mobile: 12px;
+  --font-size-sm--ms-mobile: 14px;
+  --font-size-md--ms-mobile: 16px;
+  --font-size-lg--ms-mobile: 18px;
+  --font-size-xl--ms-mobile: 20px;
+  --font-size-2xl--ms-mobile: 24px;
+  --font-size-3xl--ms-mobile: 28px;
+  --font-size-4xl--ms-mobile: 32px;
+  --font-size-5xl--ms-mobile: 36px;
+  --font-size-6xl--ms-mobile: 40px;
+}
+
+/* Collection name: Typography - Major Second */
+/* Mode: Desktop */
+:root {
+  --font-size-2xs--ms-desktop: 12px;
+  --font-size-xs--ms-desktop: 14px;
+  --font-size-sm--ms-desktop: 16px;
+  --font-size-md--ms-desktop: 18px;
+  --font-size-lg--ms-desktop: 20px;
+  --font-size-xl--ms-desktop: 24px;
+  --font-size-2xl--ms-desktop: 28px;
+  --font-size-3xl--ms-desktop: 32px;
+  --font-size-4xl--ms-desktop: 36px;
+  --font-size-5xl--ms-desktop: 40px;
+  --font-size-6xl--ms-desktop: 48px;
+}
+
+/* Collection name: Typography - Major Second */
+/* Mode: Fluid (CSS clamp - not for Figma) */
+:root {
+  --font-size-2xs--ms: clamp(var(--font-size-2xs--ms-mobile), 0.56rem + 0.28vw, var(--font-size-2xs--ms-desktop));
+  --font-size-xs--ms: clamp(var(--font-size-xs--ms-mobile), 0.68rem + 0.31vw, var(--font-size-xs--ms-desktop));
+  --font-size-sm--ms: clamp(var(--font-size-sm--ms-mobile), 0.81rem + 0.35vw, var(--font-size-sm--ms-desktop));
+  --font-size-md--ms: clamp(var(--font-size-md--ms-mobile), 0.93rem + 0.39vw, var(--font-size-md--ms-desktop));
+  --font-size-lg--ms: clamp(var(--font-size-lg--ms-mobile), 1.04rem + 0.44vw, var(--font-size-lg--ms-desktop));
+  --font-size-xl--ms: clamp(var(--font-size-xl--ms-mobile), 1.16rem + 0.49vw, var(--font-size-xl--ms-desktop));
+  --font-size-2xl--ms: clamp(var(--font-size-2xl--ms-mobile), 1.39rem + 0.56vw, var(--font-size-2xl--ms-desktop));
+  --font-size-3xl--ms: clamp(var(--font-size-3xl--ms-mobile), 1.62rem + 0.63vw, var(--font-size-3xl--ms-desktop));
+  --font-size-4xl--ms: clamp(var(--font-size-4xl--ms-mobile), 1.85rem + 0.7vw, var(--font-size-4xl--ms-desktop));
+  --font-size-5xl--ms: clamp(var(--font-size-5xl--ms-mobile), 2.08rem + 0.78vw, var(--font-size-5xl--ms-desktop));
+  --font-size-6xl--ms: clamp(var(--font-size-6xl--ms-mobile), 2.31rem + 0.85vw, var(--font-size-6xl--ms-desktop));
+}
+
+
+/* ============================================================
+   TYPOGRAPHY PRIMITIVES - Major Third Scale (1.25)
+   Mobile/Desktop modes for Figma, clamp for CSS
+   ============================================================ */
+
+/* Collection name: Typography - Major Third */
+/* Mode: Mobile */
+:root {
+  --font-size-2xs--mt-mobile: 8px;
+  --font-size-xs--mt-mobile: 10px;
+  --font-size-sm--mt-mobile: 13px;
+  --font-size-md--mt-mobile: 16px;
+  --font-size-lg--mt-mobile: 20px;
+  --font-size-xl--mt-mobile: 25px;
+  --font-size-2xl--mt-mobile: 31px;
+  --font-size-3xl--mt-mobile: 39px;
+  --font-size-4xl--mt-mobile: 49px;
+  --font-size-5xl--mt-mobile: 61px;
+  --font-size-6xl--mt-mobile: 76px;
+}
+
+/* Collection name: Typography - Major Third */
+/* Mode: Desktop */
+:root {
+  --font-size-2xs--mt-desktop: 13px;
+  --font-size-xs--mt-desktop: 16px;
+  --font-size-sm--mt-desktop: 20px;
+  --font-size-md--mt-desktop: 25px;
+  --font-size-lg--mt-desktop: 31px;
+  --font-size-xl--mt-desktop: 39px;
+  --font-size-2xl--mt-desktop: 49px;
+  --font-size-3xl--mt-desktop: 61px;
+  --font-size-4xl--mt-desktop: 76px;
+  --font-size-5xl--mt-desktop: 95px;
+  --font-size-6xl--mt-desktop: 119px;
+}
+
+/* Collection name: Typography - Major Third */
+/* Mode: Fluid (CSS clamp - not for Figma) */
+:root {
+  --font-size-2xs--mt: clamp(var(--font-size-2xs--mt-mobile), 0.43rem + 0.39vw, var(--font-size-2xs--mt-desktop));
+  --font-size-xs--mt: clamp(var(--font-size-xs--mt-mobile), 0.54rem + 0.49vw, var(--font-size-xs--mt-desktop));
+  --font-size-sm--mt: clamp(var(--font-size-sm--mt-mobile), 0.68rem + 0.61vw, var(--font-size-sm--mt-desktop));
+  --font-size-md--mt: clamp(var(--font-size-md--mt-mobile), 0.85rem + 0.76vw, var(--font-size-md--mt-desktop));
+  --font-size-lg--mt: clamp(var(--font-size-lg--mt-mobile), 1.06rem + 0.95vw, var(--font-size-lg--mt-desktop));
+  --font-size-xl--mt: clamp(var(--font-size-xl--mt-mobile), 1.33rem + 1.19vw, var(--font-size-xl--mt-desktop));
+  --font-size-2xl--mt: clamp(var(--font-size-2xl--mt-mobile), 1.66rem + 1.48vw, var(--font-size-2xl--mt-desktop));
+  --font-size-3xl--mt: clamp(var(--font-size-3xl--mt-mobile), 2.08rem + 1.85vw, var(--font-size-3xl--mt-desktop));
+  --font-size-4xl--mt: clamp(var(--font-size-4xl--mt-mobile), 2.6rem + 2.31vw, var(--font-size-4xl--mt-desktop));
+  --font-size-5xl--mt: clamp(var(--font-size-5xl--mt-mobile), 3.25rem + 2.89vw, var(--font-size-5xl--mt-desktop));
+  --font-size-6xl--mt: clamp(var(--font-size-6xl--mt-mobile), 4.06rem + 3.61vw, var(--font-size-6xl--mt-desktop));
+}
+
+
+/* ============================================================
+   SEMANTIC TOKENS - Colors
+   References Color Primitives for aliasing
+   ============================================================ */
+
+/* Collection name: Semantic */
+/* Mode: Light */
+:root {
+  /* -------- Brand Colors -------- */
+  --color-brand: var(--emerald-400);                    /* wpVar: --wp--preset--color--brand */
+  --color-brand-hover: var(--emerald-500);              /* wpVar: --wp--preset--color--brand-hover */
+  --color-brand-light: var(--emerald-100);              /* wpVar: --wp--preset--color--brand-light */
+  --color-brand-dark: var(--emerald-700);               /* wpVar: --wp--preset--color--brand-dark */
+
+  /* -------- Secondary Colors -------- */
+  --color-secondary: var(--violet-900);                 /* wpVar: --wp--preset--color--secondary */
+  --color-secondary-hover: var(--violet-950);           /* wpVar: --wp--preset--color--secondary-hover */
+  --color-secondary-light: var(--violet-100);           /* wpVar: --wp--preset--color--secondary-light */
+
+  /* -------- Background Colors -------- */
+  --color-background: var(--gray-50);                   /* wpVar: --wp--preset--color--background */
+  --color-background-alt: var(--gray-100);              /* wpVar: --wp--preset--color--background-alt */
+  --color-surface: var(--white);                        /* wpVar: --wp--preset--color--surface */
+
+  /* -------- Foreground/Text Colors -------- */
+  --color-foreground: var(--gray-900);                  /* wpVar: --wp--preset--color--card-text */
+  --color-muted: var(--gray-500);                       /* wpVar: --wp--preset--color--muted */
+  --color-subtle: var(--gray-400);                      /* wpVar: --wp--preset--color--subtle */
+
+  /* -------- Card Colors -------- */
+  --color-card: var(--white);                           /* wpVar: --wp--preset--color--card-base */
+  --color-card-border: var(--gray-200);                 /* wpVar: --wp--preset--color--card-border */
+
+  /* -------- Border Colors -------- */
+  --color-border: var(--gray-200);                      /* wpVar: --wp--preset--color--border */
+  --color-border-strong: var(--gray-300);               /* wpVar: --wp--preset--color--border-strong */
+
+  /* -------- Interactive/On Colors -------- */
+  --color-text-on-brand: var(--white);                  /* wpVar: --wp--preset--color--text-on-brand */
+  --color-text-on-secondary: var(--white);              /* wpVar: --wp--preset--color--text-on-secondary */
+
+  /* -------- Status Colors -------- */
+  --color-success: var(--green-500);                    /* wpVar: --wp--preset--color--success */
+  --color-success-light: var(--green-100);
+  --color-warning: var(--amber-500);                    /* wpVar: --wp--preset--color--warning */
+  --color-warning-light: var(--amber-100);
+  --color-error: var(--red-500);                        /* wpVar: --wp--preset--color--error */
+  --color-error-light: var(--red-100);
+  --color-info: var(--blue-500);                        /* wpVar: --wp--preset--color--info */
+  --color-info-light: var(--blue-100);
+
+  /* -------- Base/Dark -------- */
+  --color-base: var(--slate-950);                       /* wpVar: --wp--preset--color--base */
+}
+
+/* Collection name: Semantic */
+/* Mode: Dark */
+/* 
+:root {
+  --color-brand: var(--emerald-400);
+  --color-brand-hover: var(--emerald-300);
+  --color-brand-light: var(--emerald-900);
+  --color-brand-dark: var(--emerald-200);
+  --color-secondary: var(--violet-400);
+  --color-secondary-hover: var(--violet-300);
+  --color-secondary-light: var(--violet-900);
+  --color-background: var(--gray-950);
+  --color-background-alt: var(--gray-900);
+  --color-surface: var(--gray-800);
+  --color-foreground: var(--gray-50);
+  --color-muted: var(--gray-400);
+  --color-subtle: var(--gray-500);
+  --color-card: var(--gray-800);
+  --color-card-border: var(--gray-700);
+  --color-border: var(--gray-700);
+  --color-border-strong: var(--gray-600);
+  --color-text-on-brand: var(--gray-950);
+  --color-text-on-secondary: var(--white);
+  --color-success: var(--green-400);
+  --color-success-light: var(--green-900);
+  --color-warning: var(--amber-400);
+  --color-warning-light: var(--amber-900);
+  --color-error: var(--red-400);
+  --color-error-light: var(--red-900);
+  --color-info: var(--blue-400);
+  --color-info-light: var(--blue-900);
+  --color-base: var(--white);
+}
+*/
+
+
+/* ============================================================
+   SEMANTIC TOKENS - Typography
+   References primitive font sizes
+   ============================================================ */
+
+/* Collection name: Semantic Typography */
+/* Mode: Major Second */
+:root {
+  --font-size-caption: var(--font-size-2xs--ms);
+  --font-size-label: var(--font-size-xs--ms);
+  --font-size-body-small: var(--font-size-sm--ms);
+  --font-size-body: var(--font-size-md--ms);
+  --font-size-lead: var(--font-size-lg--ms);
+  --font-size-h6: var(--font-size-xl--ms);
+  --font-size-h5: var(--font-size-2xl--ms);
+  --font-size-h4: var(--font-size-3xl--ms);
+  --font-size-h3: var(--font-size-4xl--ms);
+  --font-size-h2: var(--font-size-5xl--ms);
+  --font-size-h1: var(--font-size-6xl--ms);
+}
+
+/* Collection name: Semantic Typography */
+/* Mode: Major Third */
+/*
+:root {
+  --font-size-caption: var(--font-size-2xs--mt);
+  --font-size-label: var(--font-size-xs--mt);
+  --font-size-body-small: var(--font-size-sm--mt);
+  --font-size-body: var(--font-size-md--mt);
+  --font-size-lead: var(--font-size-lg--mt);
+  --font-size-h6: var(--font-size-xl--mt);
+  --font-size-h5: var(--font-size-2xl--mt);
+  --font-size-h4: var(--font-size-3xl--mt);
+  --font-size-h3: var(--font-size-4xl--mt);
+  --font-size-h2: var(--font-size-5xl--mt);
+  --font-size-h1: var(--font-size-6xl--mt);
+}
+*/
+
+
+/* ============================================================
+   SEMANTIC TOKENS - Border Radius, Shadows, Layout
+   ============================================================ */
+
+/* Collection name: Semantic */
+/* Mode: Light */
+:root {
+  /* -------- Border Radius -------- */
+  --radius-button: var(--radius-lg);                    /* 6px  | wpVar: --wp--custom--button--border-radius */
+  --radius-card: var(--radius-xl);                      /* 8px  | wpVar: --wp--custom--card--border-radius */
+  --radius-input: var(--radius-md);                     /* 4px  | wpVar: --wp--custom--input--border-radius */
+  --radius-badge: var(--radius-full);                   /* pill | wpVar: --wp--custom--badge--border-radius */
+  --radius-modal: var(--radius-2xl);                    /* 12px | wpVar: --wp--custom--modal--border-radius */
+
+  /* -------- Shadows -------- */
+  --shadow-card: var(--shadow-sm);                      /* wpVar: --wp--custom--card--shadow */
+  --shadow-card-hover: var(--shadow-md);                /* wpVar: --wp--custom--card--shadow-hover */
+  --shadow-button: var(--shadow-sm);                    /* wpVar: --wp--custom--button--shadow */
+  --shadow-dropdown: var(--shadow-lg);                  /* wpVar: --wp--custom--dropdown--shadow */
+  --shadow-modal: var(--shadow-xl);                     /* wpVar: --wp--custom--modal--shadow */
+
+  /* -------- Layout -------- */
+  --layout-content-width: var(--layout-size-5xl);       /* 1024px | wpVar: --wp--style--global--content-size */
+  --layout-wide-width: 1440px;                          /* wpVar: --wp--style--global--wide-size */
+  --layout-prose-width: var(--layout-size-2xl);         /* 672px */
+}
+
+
+/* ============================================================
+   COMPONENT TOKENS - Button
+   ============================================================ */
+
+/* Collection name: Components */
+/* Mode: Default */
+:root {
+  --button-bg: var(--color-brand);                      /* wpVar: --wp--custom--button--background */
+  --button-bg-hover: var(--color-brand-hover);          /* wpVar: --wp--custom--button--background-hover */
+  --button-text: var(--color-text-on-brand);            /* wpVar: --wp--custom--button--text */
+  --button-border-radius: var(--radius-button);         /* wpVar: --wp--custom--button--border-radius */
+  --button-padding-x: var(--spacing-5);                 /* wpVar: --wp--custom--button--spacing--horizontal */
+  --button-padding-y: var(--spacing-2-5);               /* wpVar: --wp--custom--button--spacing--vertical */
+  --button-shadow: var(--shadow-button);                /* wpVar: --wp--custom--button--shadow */
+  --button-height-sm: var(--size-10);                   /* 40px */
+  --button-height-md: var(--size-12);                   /* 48px */
+  --button-height-lg: var(--size-14);                   /* 56px */
+
+  /* Secondary Button Variant */
+  --button-secondary-bg: var(--color-secondary);
+  --button-secondary-bg-hover: var(--color-secondary-hover);
+  --button-secondary-text: var(--color-text-on-secondary);
+
+  /* Outline Button Variant */
+  --button-outline-bg: var(--transparent);
+  --button-outline-border: var(--color-brand);
+  --button-outline-text: var(--color-brand);
+  --button-outline-hover-bg: var(--color-brand-light);
+}
+
+
+/* ============================================================
+   COMPONENT TOKENS - Card
+   ============================================================ */
+
+/* Collection name: Components */
+/* Mode: Default */
+:root {
+  --card-bg: var(--color-card);                         /* wpVar: --wp--preset--color--card-base */
+  --card-border: var(--color-card-border);              /* wpVar: --wp--preset--color--card-border */
+  --card-text: var(--color-foreground);                 /* wpVar: --wp--preset--color--card-text */
+  --card-border-radius: var(--radius-card);             /* wpVar: --wp--custom--card--border-radius */
+  --card-padding: var(--spacing-6);                     /* wpVar: --wp--custom--card--spacing */
+  --card-shadow: var(--shadow-card);                    /* wpVar: --wp--custom--card--shadow */
+  --card-shadow-hover: var(--shadow-card-hover);        /* wpVar: --wp--custom--card--shadow-hover */
+}
+
+
+/* ============================================================
+   COMPONENT TOKENS - Input
+   ============================================================ */
+
+/* Collection name: Components */
+/* Mode: Default */
+:root {
+  --input-bg: var(--color-surface);                     /* wpVar: --wp--custom--input--background */
+  --input-border: var(--color-border);                  /* wpVar: --wp--custom--input--border */
+  --input-border-focus: var(--color-brand);             /* Focus state border */
+  --input-border-radius: var(--radius-input);           /* wpVar: --wp--custom--input--border-radius */
+  --input-padding-x: var(--spacing-3);                  /* wpVar: --wp--custom--input--spacing--horizontal */
+  --input-padding-y: var(--spacing-2);                  /* wpVar: --wp--custom--input--spacing--vertical */
+  --input-height: var(--size-10);                       /* 40px */
+  --input-text: var(--color-foreground);
+  --input-placeholder: var(--color-muted);
+}
+
+
+/* ============================================================
+   GREENLIGHT / WORDPRESS ADAPTER
+   Maps WordPress preset variables to consume design system tokens
+   This makes your design system the source of truth for WordPress
+   ============================================================ */
+
+/*
+:root {
+  /* -------- Color Presets -------- */
+  --wp--preset--color--brand: var(--color-brand);
+  --wp--preset--color--brand-hover: var(--color-brand-hover);
+  --wp--preset--color--brand-light: var(--color-brand-light);
+  --wp--preset--color--brand-dark: var(--color-brand-dark);
+  --wp--preset--color--secondary: var(--color-secondary);
+  --wp--preset--color--secondary-hover: var(--color-secondary-hover);
+  --wp--preset--color--secondary-light: var(--color-secondary-light);
+  --wp--preset--color--background: var(--color-background);
+  --wp--preset--color--background-alt: var(--color-background-alt);
+  --wp--preset--color--surface: var(--color-surface);
+  --wp--preset--color--card-text: var(--color-foreground);
+  --wp--preset--color--muted: var(--color-muted);
+  --wp--preset--color--subtle: var(--color-subtle);
+  --wp--preset--color--card-base: var(--color-card);
+  --wp--preset--color--card-border: var(--color-card-border);
+  --wp--preset--color--border: var(--color-border);
+  --wp--preset--color--border-strong: var(--color-border-strong);
+  --wp--preset--color--text-on-brand: var(--color-text-on-brand);
+  --wp--preset--color--text-on-secondary: var(--color-text-on-secondary);
+  --wp--preset--color--success: var(--color-success);
+  --wp--preset--color--warning: var(--color-warning);
+  --wp--preset--color--error: var(--color-error);
+  --wp--preset--color--info: var(--color-info);
+  --wp--preset--color--base: var(--color-base);
+
+  /* -------- Spacing Presets -------- */
+  --wp--preset--spacing--0: var(--spacing-0);
+  --wp--preset--spacing--px: var(--spacing-px);
+  --wp--preset--spacing--0-5: var(--spacing-0-5);
+  --wp--preset--spacing--1: var(--spacing-1);
+  --wp--preset--spacing--1-5: var(--spacing-1-5);
+  --wp--preset--spacing--2: var(--spacing-2);
+  --wp--preset--spacing--2-5: var(--spacing-2-5);
+  --wp--preset--spacing--3: var(--spacing-3);
+  --wp--preset--spacing--3-5: var(--spacing-3-5);
+  --wp--preset--spacing--4: var(--spacing-4);
+  --wp--preset--spacing--5: var(--spacing-5);
+  --wp--preset--spacing--6: var(--spacing-6);
+  --wp--preset--spacing--7: var(--spacing-7);
+  --wp--preset--spacing--8: var(--spacing-8);
+  --wp--preset--spacing--9: var(--spacing-9);
+  --wp--preset--spacing--10: var(--spacing-10);
+  --wp--preset--spacing--12: var(--spacing-12);
+  --wp--preset--spacing--14: var(--spacing-14);
+  --wp--preset--spacing--16: var(--spacing-16);
+  --wp--preset--spacing--20: var(--spacing-20);
+  --wp--preset--spacing--24: var(--spacing-24);
+  --wp--preset--spacing--32: var(--spacing-32);
+  --wp--preset--spacing--40: var(--spacing-40);
+  --wp--preset--spacing--48: var(--spacing-48);
+  --wp--preset--spacing--56: var(--spacing-56);
+  --wp--preset--spacing--64: var(--spacing-64);
+
+  /* -------- Custom Component Properties -------- */
+  --wp--custom--button--background: var(--button-bg);
+  --wp--custom--button--background-hover: var(--button-bg-hover);
+  --wp--custom--button--text: var(--button-text);
+  --wp--custom--button--border-radius: var(--button-border-radius);
+  --wp--custom--button--spacing--horizontal: var(--button-padding-x);
+  --wp--custom--button--spacing--vertical: var(--button-padding-y);
+  --wp--custom--button--shadow: var(--button-shadow);
+
+  --wp--custom--card--shadow: var(--card-shadow);
+  --wp--custom--card--shadow-hover: var(--card-shadow-hover);
+  --wp--custom--card--border-radius: var(--card-border-radius);
+  --wp--custom--card--spacing: var(--card-padding);
+
+  --wp--custom--input--background: var(--input-bg);
+  --wp--custom--input--border: var(--input-border);
+  --wp--custom--input--border-radius: var(--input-border-radius);
+  --wp--custom--input--spacing--horizontal: var(--input-padding-x);
+  --wp--custom--input--spacing--vertical: var(--input-padding-y);
+
+  --wp--custom--dropdown--shadow: var(--shadow-dropdown);
+  --wp--custom--modal--shadow: var(--shadow-modal);
+  --wp--custom--modal--border-radius: var(--radius-modal);
+  --wp--custom--badge--border-radius: var(--radius-badge);
+
+  /* -------- Layout -------- */
+  --wp--style--global--content-size: var(--layout-content-width);
+  --wp--style--global--wide-size: var(--layout-wide-width);
+}
+*/
+
+
+/* ============================================================
+   USAGE EXAMPLES
+   ============================================================ */
+
+/*
+body {
+  font-size: var(--font-size-body);
+  line-height: var(--line-height-normal);
+  color: var(--color-foreground);
+  background: var(--color-background);
+}
+
+h1 {
+  font-size: var(--font-size-h1);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-tight);
+}
+
+h2 { font-size: var(--font-size-h2); }
+h3 { font-size: var(--font-size-h3); }
+h4 { font-size: var(--font-size-h4); }
+h5 { font-size: var(--font-size-h5); }
+h6 { font-size: var(--font-size-h6); }
+
+.button {
+  background: var(--button-bg);
+  color: var(--button-text);
+  border-radius: var(--button-border-radius);
+  padding: var(--button-padding-y) var(--button-padding-x);
+  min-height: var(--button-height-md);
+  font-size: var(--font-size-body);
+  font-weight: var(--font-weight-medium);
+  box-shadow: var(--button-shadow);
+  transition: all var(--duration-200) var(--ease-out);
+}
+
+.button:hover {
+  background: var(--button-bg-hover);
+}
+
+.card {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: var(--card-border-radius);
+  padding: var(--card-padding);
+  box-shadow: var(--card-shadow);
+  transition: box-shadow var(--duration-200) var(--ease-out);
+}
+
+.card:hover {
+  box-shadow: var(--card-shadow-hover);
+}
+
+.input {
+  background: var(--input-bg);
+  border: 1px solid var(--input-border);
+  border-radius: var(--input-border-radius);
+  padding: var(--input-padding-y) var(--input-padding-x);
+  min-height: var(--input-height);
+  font-size: var(--font-size-body);
+}
+
+.input:focus {
+  border-color: var(--input-border-focus);
+  outline: none;
+  box-shadow: 0 0 0 3px var(--color-brand-light);
+}
+*/
