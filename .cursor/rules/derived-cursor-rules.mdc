@@ -170,6 +170,9 @@ interface Token {
 *   When creating a new design system application, always create a new react/nextjs app to preview updates locally before pushing the code live. Do not edit existing files directly.
 *   After re-authenticating with GitHub CLI, always configure git with the appropriate email before pushing any code.
 *   After initializing a git repository, always configure git with the appropriate email before adding files.
+*   **Correct GitHub Commits:** Ensure all local files and previous commits are associated with the `altitudemarketing` GitHub organization under the correct user account.
+*   **Project Setup:** Update the `@README.md` file with the current project overview and structure.
+*   **Git Ignore:** Add the `old design systems` folder to the `.gitignore` file.
 
 ## CODING STANDARDS
 
@@ -557,5 +560,4 @@ Here is a high-fidelity mockup using HTML and Tailwind classes to demonstrate th
         </div>
         <div class="flex items-center gap-3">
             <button class="text-sm font-medium text-gray-600 hover:text-gray-900 px-3 py-1.5">Reset</button>
-            <button class="bg-black text-white text-sm font-medium px-4 py-2 rounded-md hover:bg-gray-800 flex items-center gap-2">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke
+            <button class="bg-black text-white text-sm font-medium px-4 py-2 rounded

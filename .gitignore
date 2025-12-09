@@ -39,3 +39,7 @@ next-env.d.ts
 *.swp
 *.swo
 *~
+
+# Old design system versions (archived)
+old-design-system-ui/
+old-system v2/
