@@ -12,8 +12,8 @@ interface ElementMetadata {
   propertyLabel: string;
   chain: TokenChainNode[];
   affected: AffectedToken[];
-  /** CSS variable name used to resolve the color, or 'brand' / 'secondary' / 'neutral' for computed values */
-  colorSource: 'brand' | 'brand-light' | 'brand-dark' | 'secondary' | 'secondary-light' | 'muted' | 'foreground' | 'surface' | 'border';
+  /** CSS variable name used to resolve the color */
+  colorSource: 'brand' | 'brand-light' | 'brand-dark' | 'secondary' | 'secondary-light' | 'secondary-dark' | 'accent' | 'accent-light' | 'muted' | 'foreground' | 'surface' | 'border';
 }
 
 /** Mock data for token chains based on selected element */
@@ -38,25 +38,25 @@ const ELEMENT_TOKEN_CHAINS: Record<string, ElementMetadata> = {
   'button-outline': {
     displayName: 'Button Outline',
     propertyLabel: 'Border & text color',
-    colorSource: 'brand',
+    colorSource: 'secondary',
     chain: [
       { layer: 'component', label: 'Component', name: 'Button.Border.Outline' },
-      { layer: 'semantic', label: 'Semantic', name: 'Color.Brand.Default', sublabel: 'Light mode' },
-      { layer: 'primitive', label: 'Primitive', name: 'Color.Emerald.400' },
+      { layer: 'semantic', label: 'Semantic', name: 'Color.Secondary.Default', sublabel: 'Light mode' },
+      { layer: 'primitive', label: 'Primitive', name: 'Color.Violet.400' },
     ],
     affected: [
-      { id: 'primary-bg', name: 'Primary Button Background' },
-      { id: 'link-color', name: 'Link Color' },
+      { id: 'badge-text', name: 'Badge Text Color' },
+      { id: 'secondary-link', name: 'Secondary Link Color' },
     ],
   },
   'badge': {
     displayName: 'Badge',
     propertyLabel: 'Background color',
-    colorSource: 'brand-light',
+    colorSource: 'secondary-light',
     chain: [
       { layer: 'component', label: 'Component', name: 'Badge.Background' },
-      { layer: 'semantic', label: 'Semantic', name: 'Color.Brand.Light', sublabel: 'Light mode' },
-      { layer: 'primitive', label: 'Primitive', name: 'Color.Emerald.100' },
+      { layer: 'semantic', label: 'Semantic', name: 'Color.Secondary.Light', sublabel: 'Light mode' },
+      { layer: 'primitive', label: 'Primitive', name: 'Color.Violet.100' },
     ],
     affected: [
       { id: 'highlight-bg', name: 'Highlight Background' },
@@ -176,7 +176,7 @@ const ELEMENT_TOKEN_CHAINS: Record<string, ElementMetadata> = {
  * - Affected components list
  */
 export function TokenInspector() {
-  const { state, brandHex, secondaryHex } = useThemeGenerator();
+  const { state, brandHex, secondaryHex, accentHex } = useThemeGenerator();
   
   // Get chain data based on selected element
   const selectedData = state.selectedElement 
@@ -192,31 +192,36 @@ export function TokenInspector() {
     stone: { 50: '#fafaf9', 100: '#f5f5f4', 200: '#e7e5e4', 300: '#d6d3d1', 400: '#a8a29e', 500: '#78716c', 600: '#57534e', 700: '#44403c', 800: '#292524', 900: '#1c1917' },
   }[state.neutralScale] as Record<string, string>;
   
-  // Brand light color (shade 100)
-  const brandLightHex = (() => {
-    const family = state.brandColor.family;
-    // Use the colorPalettes to get shade 100
-    const palettes: Record<string, Record<number, string>> = {
-      emerald: { 100: '#d1fae5', 400: '#34d399', 700: '#047857' },
-      blue: { 100: '#dbeafe', 400: '#60a5fa', 700: '#1d4ed8' },
-      violet: { 100: '#ede9fe', 400: '#a78bfa', 700: '#6d28d9' },
-      red: { 100: '#fee2e2', 400: '#f87171', 700: '#b91c1c' },
-      orange: { 100: '#ffedd5', 400: '#fb923c', 700: '#c2410c' },
-      teal: { 100: '#ccfbf1', 400: '#2dd4bf', 700: '#0f766e' },
-      cyan: { 100: '#cffafe', 400: '#22d3ee', 700: '#0e7490' },
-      green: { 100: '#dcfce7', 400: '#4ade80', 700: '#15803d' },
-      indigo: { 100: '#e0e7ff', 400: '#818cf8', 700: '#4338ca' },
-      pink: { 100: '#fce7f3', 400: '#f472b6', 700: '#be185d' },
-      rose: { 100: '#ffe4e6', 400: '#fb7185', 700: '#be123c' },
-      amber: { 100: '#fef3c7', 400: '#fbbf24', 700: '#b45309' },
-      yellow: { 100: '#fef9c3', 400: '#facc15', 700: '#a16207' },
-      lime: { 100: '#ecfccb', 400: '#a3e635', 700: '#4d7c0f' },
-      purple: { 100: '#f3e8ff', 400: '#c084fc', 700: '#7e22ce' },
-      fuchsia: { 100: '#fae8ff', 400: '#e879f9', 700: '#a21caf' },
-      sky: { 100: '#e0f2fe', 400: '#38bdf8', 700: '#0369a1' },
-    };
-    return palettes[family]?.[100] || '#d1fae5';
-  })();
+  // Color palettes for light/dark shade lookups
+  const colorPalettes: Record<string, Record<number, string>> = {
+    emerald: { 50: '#ecfdf5', 100: '#d1fae5', 200: '#a7f3d0', 400: '#34d399', 700: '#047857' },
+    blue: { 50: '#eff6ff', 100: '#dbeafe', 200: '#bfdbfe', 400: '#60a5fa', 700: '#1d4ed8' },
+    violet: { 50: '#f5f3ff', 100: '#ede9fe', 200: '#ddd6fe', 400: '#a78bfa', 700: '#6d28d9' },
+    red: { 50: '#fef2f2', 100: '#fee2e2', 200: '#fecaca', 400: '#f87171', 700: '#b91c1c' },
+    orange: { 50: '#fff7ed', 100: '#ffedd5', 200: '#fed7aa', 400: '#fb923c', 700: '#c2410c' },
+    teal: { 50: '#f0fdfa', 100: '#ccfbf1', 200: '#99f6e4', 400: '#2dd4bf', 700: '#0f766e' },
+    cyan: { 50: '#ecfeff', 100: '#cffafe', 200: '#a5f3fc', 400: '#22d3ee', 700: '#0e7490' },
+    green: { 50: '#f0fdf4', 100: '#dcfce7', 200: '#bbf7d0', 400: '#4ade80', 700: '#15803d' },
+    indigo: { 50: '#eef2ff', 100: '#e0e7ff', 200: '#c7d2fe', 400: '#818cf8', 700: '#4338ca' },
+    pink: { 50: '#fdf2f8', 100: '#fce7f3', 200: '#fbcfe8', 400: '#f472b6', 700: '#be185d' },
+    rose: { 50: '#fff1f2', 100: '#ffe4e6', 200: '#fecdd3', 400: '#fb7185', 700: '#be123c' },
+    amber: { 50: '#fffbeb', 100: '#fef3c7', 200: '#fde68a', 400: '#fbbf24', 700: '#b45309' },
+    yellow: { 50: '#fefce8', 100: '#fef9c3', 200: '#fef08a', 400: '#facc15', 700: '#a16207' },
+    lime: { 50: '#f7fee7', 100: '#ecfccb', 200: '#d9f99d', 400: '#a3e635', 700: '#4d7c0f' },
+    purple: { 50: '#faf5ff', 100: '#f3e8ff', 200: '#e9d5ff', 400: '#c084fc', 700: '#7e22ce' },
+    fuchsia: { 50: '#fdf4ff', 100: '#fae8ff', 200: '#f5d0fe', 400: '#e879f9', 700: '#a21caf' },
+    sky: { 50: '#f0f9ff', 100: '#e0f2fe', 200: '#bae6fd', 400: '#38bdf8', 700: '#0369a1' },
+  };
+  
+  // Brand light color (shade 100 relative to selected shade)
+  const brandLightHex = colorPalettes[state.brandColor.family]?.[100] || '#d1fae5';
+  
+  // Secondary colors
+  const secondaryLightHex = colorPalettes[state.secondaryColor.family]?.[100] || '#ede9fe';
+  const secondaryDarkHex = colorPalettes[state.secondaryColor.family]?.[700] || '#6d28d9';
+  
+  // Accent colors
+  const accentLightHex = colorPalettes[state.accentColor.family]?.[100] || '#d1fae5';
   
   // Resolve the actual color based on the colorSource
   const resolvedColor = (() => {
@@ -224,9 +229,12 @@ export function TokenInspector() {
     switch (selectedData.colorSource) {
       case 'brand': return brandHex;
       case 'brand-light': return brandLightHex;
-      case 'brand-dark': return brandHex; // Would need to compute darker shade
+      case 'brand-dark': return colorPalettes[state.brandColor.family]?.[700] || '#047857';
       case 'secondary': return secondaryHex;
-      case 'secondary-light': return '#ede9fe'; // Would need proper lookup
+      case 'secondary-light': return secondaryLightHex;
+      case 'secondary-dark': return secondaryDarkHex;
+      case 'accent': return accentHex;
+      case 'accent-light': return accentLightHex;
       case 'muted': return neutralColors[500] || '#6b7280';
       case 'foreground': return neutralColors[900] || '#111827';
       case 'surface': return '#ffffff';
@@ -235,35 +243,38 @@ export function TokenInspector() {
     }
   })();
   
+  // Helper to capitalize first letter
+  const capitalize = (s: string) => s.charAt(0).toUpperCase() + s.slice(1);
+  
   // Update the primitive name based on current theme settings
   const chain = selectedData?.chain.map((node) => {
     if (node.layer === 'primitive') {
       // Update primitive name based on what color source is being used
-      if (selectedData.colorSource === 'brand') {
-        return {
-          ...node,
-          name: `Color.${state.brandColor.family.charAt(0).toUpperCase() + state.brandColor.family.slice(1)}.${state.brandColor.shade}`,
-        };
-      } else if (selectedData.colorSource === 'brand-light') {
-        return {
-          ...node,
-          name: `Color.${state.brandColor.family.charAt(0).toUpperCase() + state.brandColor.family.slice(1)}.100`,
-        };
-      } else if (selectedData.colorSource === 'muted') {
-        return {
-          ...node,
-          name: `Color.${state.neutralScale.charAt(0).toUpperCase() + state.neutralScale.slice(1)}.500`,
-        };
-      } else if (selectedData.colorSource === 'foreground') {
-        return {
-          ...node,
-          name: `Color.${state.neutralScale.charAt(0).toUpperCase() + state.neutralScale.slice(1)}.900`,
-        };
-      } else if (selectedData.colorSource === 'border') {
-        return {
-          ...node,
-          name: `Color.${state.neutralScale.charAt(0).toUpperCase() + state.neutralScale.slice(1)}.200`,
-        };
+      switch (selectedData.colorSource) {
+        case 'brand':
+          return { ...node, name: `Color.${capitalize(state.brandColor.family)}.${state.brandColor.shade}` };
+        case 'brand-light':
+          return { ...node, name: `Color.${capitalize(state.brandColor.family)}.100` };
+        case 'brand-dark':
+          return { ...node, name: `Color.${capitalize(state.brandColor.family)}.700` };
+        case 'secondary':
+          return { ...node, name: `Color.${capitalize(state.secondaryColor.family)}.${state.secondaryColor.shade}` };
+        case 'secondary-light':
+          return { ...node, name: `Color.${capitalize(state.secondaryColor.family)}.100` };
+        case 'secondary-dark':
+          return { ...node, name: `Color.${capitalize(state.secondaryColor.family)}.700` };
+        case 'accent':
+          return { ...node, name: `Color.${capitalize(state.accentColor.family)}.${state.accentColor.shade}` };
+        case 'accent-light':
+          return { ...node, name: `Color.${capitalize(state.accentColor.family)}.100` };
+        case 'muted':
+          return { ...node, name: `Color.${capitalize(state.neutralScale)}.500` };
+        case 'foreground':
+          return { ...node, name: `Color.${capitalize(state.neutralScale)}.900` };
+        case 'border':
+          return { ...node, name: `Color.${capitalize(state.neutralScale)}.200` };
+        default:
+          return node;
       }
     }
     return node;
